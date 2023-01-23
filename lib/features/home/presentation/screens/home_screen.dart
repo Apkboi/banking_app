@@ -1,4 +1,5 @@
 import 'package:banking_app/features/home/presentation/screens/home_tab.dart';
+import 'package:banking_app/features/pay/presentation/screens/pay_screen.dart';
 import 'package:banking_app/features/transactions/presentation/screens/transactions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -16,11 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
   List<Widget> pages = [
     const HomeTab(),
-    Container(),
+    const PayScreen(),
     const TransactionsScreen(),
     Container(),
-
-
   ];
 
   @override
@@ -72,7 +71,6 @@ class _HomeScreenState extends State<HomeScreen> {
             GButton(
               icon: Icons.send_outlined,
               text: 'Pay',
-
             ),
             GButton(
               icon: LineIcons.barChartAlt,

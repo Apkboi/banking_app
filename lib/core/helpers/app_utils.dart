@@ -691,24 +691,24 @@ class AppUtils {
   }
 }
 
-class ConFirmPinDialog extends StatefulWidget {
-  const ConFirmPinDialog(
-      {Key? key,
-      required this.onCorrect,
-      required this.onInCorrect,
-      required this.controller,
-      this.userData,
-      required this.message})
-      : super(key: key);
-  final VoidCallback onCorrect;
-  final VoidCallback onInCorrect;
-  final PINController controller;
-  final UserData? userData;
-  final String message;
-
-  @override
-  State<ConFirmPinDialog> createState() => _ConFirmPinDialogState();
-}
+// class ConFirmPinDialog extends StatefulWidget {
+//   const ConFirmPinDialog(
+//       {Key? key,
+//       required this.onCorrect,
+//       required this.onInCorrect,
+//       required this.controller,
+//       this.userData,
+//       required this.message})
+//       : super(key: key);
+//   final VoidCallback onCorrect;
+//   final VoidCallback onInCorrect;
+//   final PINController controller;
+//   final UserData? userData;
+//   final String message;
+//
+//   @override
+//   State<ConFirmPinDialog> createState() => _ConFirmPinDialogState();
+// }
 
 class _ConFirmPinDialogState extends State<ConFirmPinDialog> {
   AuthBloc authBloc = AuthBloc(injector.get());

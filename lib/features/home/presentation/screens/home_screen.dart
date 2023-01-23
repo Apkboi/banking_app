@@ -1,3 +1,5 @@
+import 'package:banking_app/features/home/presentation/screens/home_tab.dart';
+import 'package:banking_app/features/transactions/presentation/screens/transactions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -13,9 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int _activePage = 0;
   final PageController _pageController = PageController();
   List<Widget> pages = [
+    const HomeTab(),
     Container(),
+    const TransactionsScreen(),
     Container(),
-    Container(),
+
+
   ];
 
   @override
@@ -46,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // tabShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)], // tab button shadow
           curve: Curves.easeIn,
           // tab animation curves
-          duration: const Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 400),
           // tab animation duration
           gap: 8,
           // the tab button gap between icon and text
@@ -65,8 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
               text: 'Home',
             ),
             GButton(
-              icon: LineIcons.share,
+              icon: Icons.send_outlined,
               text: 'Pay',
+
             ),
             GButton(
               icon: LineIcons.barChartAlt,

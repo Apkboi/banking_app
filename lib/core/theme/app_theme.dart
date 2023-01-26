@@ -14,6 +14,7 @@ class AppTheme {
     scaffoldBackgroundColor: app_colors.lightBackgroundColor,
     fontFamily: 'Poppins',
     cardColor: app_colors.lightCardColor,
+    primaryColor: app_colors.primaryColor,
     bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: app_colors.lightBottomSheetColor),
     appBarTheme: AppBarTheme(
@@ -29,7 +30,7 @@ class AppTheme {
       ),
     ),
     colorScheme: const ColorScheme.light(
-        primary: app_colors.white,
+        primary: app_colors.primaryColor,
         onPrimary: app_colors.black,
         primaryContainer: Colors.white38,
         secondary: Color.fromARGB(255, 47, 121, 200),
@@ -105,6 +106,13 @@ class AppTheme {
         // fontSize: 18.0,
       ),
     ),
+  );
+  static InputDecoration filledTextFieldDecoration = InputDecoration(
+    filled: true,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 16),
+    border: OutlineInputBorder(
+        gapPadding: 2,
+        borderSide: BorderSide.none, borderRadius: BorderRadius.circular(10)),
   );
 
   static Future<bool> getPhoneTheme() async {

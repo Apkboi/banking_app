@@ -34,8 +34,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               const Expanded(child: SearchField()),
               const SizedBox(width: 8,),
               Container(
-                height: 60,
-                width: 60,
+                height: 50,
+                width: 50,
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     color: Theme.of(context).cardColor,
@@ -44,8 +44,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               ),
               const SizedBox(width: 8,),
               Container(
-                height: 60,
-                width: 60,
+                height: 50,
+                width: 50,
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     color: Theme.of(context).cardColor,

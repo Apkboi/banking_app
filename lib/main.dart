@@ -1,5 +1,5 @@
 import 'package:banking_app/core/theme/app_theme.dart';
-import 'package:banking_app/features/home/presentation/screens/home_screen.dart';
+import 'package:banking_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Banking App',
       theme: AppTheme.lightTheme,
-      home: const HomeScreen(),
+      home: const SignUpScreen(),
     );
   }
 }

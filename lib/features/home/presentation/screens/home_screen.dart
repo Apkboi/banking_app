@@ -1,4 +1,5 @@
 import 'package:banking_app/features/home/presentation/screens/home_tab.dart';
+import 'package:banking_app/features/more/presentation/screens/more_tab.dart';
 import 'package:banking_app/features/pay/presentation/screens/pay_screen.dart';
 import 'package:banking_app/features/transactions/presentation/screens/transactions_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeTab(),
     const PayScreen(),
     const TransactionsScreen(),
-    Container(),
+   const MoreTab(),
   ];
 
   @override

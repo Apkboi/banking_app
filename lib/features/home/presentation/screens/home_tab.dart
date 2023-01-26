@@ -1,3 +1,4 @@
+import 'package:banking_app/core/helpers/app_utils.dart';
 import 'package:banking_app/features/home/presentation/widgets/beneficiary_item.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
@@ -116,6 +117,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
             Expanded(
               child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 itemCount: 5,
@@ -140,9 +142,11 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
       decoration: BoxDecoration(
-          color: Colors.black, borderRadius: BorderRadius.circular(8)),
+          color: Colors.black, borderRadius: BorderRadius.circular(8),
+          image: const DecorationImage(image: AssetImage('assets/jpeg/indigo_bg.jpeg',),fit: BoxFit.cover)
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -167,15 +171,20 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
               ],
             ),
           ),
-          const CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.black,
-            child: CircleAvatar(
-              radius: 22,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.add_rounded,
-                color: Colors.black,
+          GestureDetector(
+            onTap: (){
+              AppUtils.showErrorDialog(context);
+            },
+            child: const CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.indigo,
+              child: CircleAvatar(
+                radius: 22,
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.add_rounded,
+                  color: Colors.black,
+                ),
               ),
             ),
           )

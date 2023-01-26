@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text('Dont have an account ?'),
+                      const Text('Don\'t have an account ?'),
                       const SizedBox(
                         width: 8,
                       ),

@@ -17,13 +17,9 @@ class _BeneficiaryItemState extends State<BeneficiaryItem> {
           Container(
             height: 50,
             width: 50,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.indigo),
-            child: const Center(
-              child: Text(
-                "T",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
-              ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.blue),
+            child:  Center(
+                child: Image.asset('assets/gif/sign_up_emoji.gif')
             ),
           ),
           // const CircleAvatar(

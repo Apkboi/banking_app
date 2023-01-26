@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeTab(),
     const PayScreen(),
     const TransactionsScreen(),
-   const MoreTab(),
+    const MoreTab(),
   ];
 
   @override
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               text: 'Home',
             ),
             GButton(
-              icon: Icons.send_outlined,
+              icon: Icons.show_chart_rounded,
               text: 'Pay',
             ),
             GButton(

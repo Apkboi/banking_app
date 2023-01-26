@@ -45,7 +45,7 @@ class _OutlinedFormFieldState extends State<OutlinedFormField> {
             suffixIcon: widget.suffix,
             prefixIcon: widget.preffix,
             prefixIconColor: Colors.blueGrey,
-            contentPadding: const EdgeInsets.symmetric(vertical: 16,horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(vertical: 18,horizontal: 16),
             suffixIconColor: Theme.of(context).colorScheme.primary,
             hintStyle: TextStyle(color: Colors.grey.shade500)),
       ),

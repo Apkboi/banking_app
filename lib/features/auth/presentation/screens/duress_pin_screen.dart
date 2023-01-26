@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:banking_app/core/helpers/app_utils.dart';
 import 'package:banking_app/features/auth/presentation/widgets/pin_view.dart';
+import 'package:banking_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icon.dart';
 
@@ -97,6 +98,9 @@ class _DuressPinScreenState extends State<DuressPinScreen> {
     } else if (pinMode == TransactionPinMode.confirm) {
       confirmPin = value;
       if (pin == confirmPin) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        ));
         // _authBloc.add(SetTransactionPinEvent(email: widget.email, pin: pin));
       } else {
         _pinController.resetPin();

@@ -19,8 +19,8 @@ class AppUtils {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor:
-                Theme.of(context).primaryColor, // button text color
+                // foregroundColor:
+                // Theme.of(context).primaryColor, // button text color
               ),
             ),
           ),
@@ -60,8 +60,8 @@ class AppUtils {
               entryModeIconColor: Theme.of(context).primaryColor),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor:
-              Theme.of(context).primaryColor, // button text color
+              // foregroundColor:
+              // Theme.of(context).primaryColor, // button text color
             ),
           ),
         ),

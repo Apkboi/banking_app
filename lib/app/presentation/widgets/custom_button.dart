@@ -18,13 +18,14 @@ class _CustomButtonState extends State<CustomButton> {
       children: [
         Expanded(
             child: ElevatedButton(
-          onPressed: widget.onPressed,
-          style: ElevatedButton.styleFrom(
+             onPressed: widget.onPressed,
+              style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(18),
-              foregroundColor: Colors.white,
-              backgroundColor: Theme.of(context).primaryColor,),
+              // foregroundColor: Colors.white,
+              // backgroundColor: Theme.of(context).primaryColor,
+             ),
 
-          child: widget.child,
+             child: widget.child,
         )),
       ],
     );

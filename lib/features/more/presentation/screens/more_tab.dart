@@ -14,7 +14,7 @@ class _MoreTabState extends State<MoreTab> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black12,
+        // backgroundColor: Colors.black,
         body: Column(
           children: [
             const SizedBox(
@@ -25,7 +25,7 @@ class _MoreTabState extends State<MoreTab> {
               child: Center(
                   child: Text(
                 "More",
-                style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
               )),
             ),
             const Divider(
@@ -36,7 +36,7 @@ class _MoreTabState extends State<MoreTab> {
               child: Row(
                 children: [
                   const CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
                     radius: 30,
                   ),
                   const SizedBox(
@@ -51,12 +51,11 @@ class _MoreTabState extends State<MoreTab> {
                           "Moses Gideon",
                           style: TextStyle(
                               fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              fontWeight: FontWeight.bold,),
                         ),
                         Text(
                           "Account details",
-                          style: TextStyle(color: Colors.white, fontSize: 10),
+                          style: TextStyle(fontSize: 10),
                         ),
                       ],
                     ),
@@ -69,42 +68,11 @@ class _MoreTabState extends State<MoreTab> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              child: Row(
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.grey,
-                        )),
-                    child: const Icon(Icons.notifications),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Text(
-                    "Get Bank Business ",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,color: Colors.grey,
-                  )
-                ],
-              ),
-            ),
+
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     Padding(
@@ -116,7 +84,7 @@ class _MoreTabState extends State<MoreTab> {
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
+                              color: Colors.grey.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: const Icon(Icons.book,color: Colors.grey,),
@@ -130,7 +98,6 @@ class _MoreTabState extends State<MoreTab> {
                               Text(
                                 "Statements & Reports ",
                                 style: TextStyle(
-                                    color: Colors.white,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -151,6 +118,7 @@ class _MoreTabState extends State<MoreTab> {
                         ],
                       ),
                     ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 15),
@@ -160,51 +128,7 @@ class _MoreTabState extends State<MoreTab> {
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.blue.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Icon(Icons.save,color: Colors.blue,),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Saved cards ",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                "Manage connected cards",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 20,color: Colors.grey,
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 15),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
+                              color: Colors.red.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: const Icon(Icons.help,color: Colors.redAccent,),
@@ -218,7 +142,7 @@ class _MoreTabState extends State<MoreTab> {
                               Text(
                                 "Get Help",
                                 style: TextStyle(
-                                    color: Colors.white,
+
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -250,7 +174,7 @@ class _MoreTabState extends State<MoreTab> {
                               height: 40,
                               width: 40,
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.orangeAccent.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: const Icon(Icons.lock,color: Colors.orangeAccent,),
@@ -264,12 +188,12 @@ class _MoreTabState extends State<MoreTab> {
                                 Text(
                                   "Security",
                                   style: TextStyle(
-                                      color: Colors.white,
+
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                  "Protect yourself fromintruders",
+                                  "Protect yourself from intruders",
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 10,
@@ -286,6 +210,7 @@ class _MoreTabState extends State<MoreTab> {
                         ),
                       ),
                     ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 15),
@@ -295,51 +220,7 @@ class _MoreTabState extends State<MoreTab> {
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Icon(Icons.adb_sharp,color: Colors.greenAccent,),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Referrals ",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                "Earn money when you refer",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 20,color: Colors.grey,
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 15),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
+                              color: Colors.blueGrey.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: const Icon(Icons.arrow_circle_right_sharp,color: Colors.blueGrey,),
@@ -353,7 +234,6 @@ class _MoreTabState extends State<MoreTab> {
                               Text(
                                 "Account Limits",
                                 style: TextStyle(
-                                    color: Colors.white,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -383,7 +263,7 @@ class _MoreTabState extends State<MoreTab> {
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
+                              color: Colors.redAccent.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: const Icon(Icons.legend_toggle,color: Colors.redAccent,),
@@ -397,7 +277,7 @@ class _MoreTabState extends State<MoreTab> {
                               Text(
                                 "Legal ",
                                 style: TextStyle(
-                                    color: Colors.white,
+
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -421,13 +301,13 @@ class _MoreTabState extends State<MoreTab> {
                     Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 15),
-                        child: FlatButton(
+                        child: TextButton(
                             onPressed: () {},
                             child: const Text(
                               "Sign out",
                               style: TextStyle(color: Colors.redAccent),
                             ))),
-                    FlatButton(
+                    TextButton(
                         onPressed: () {},
                         child: const Text(
                           "2.00138",

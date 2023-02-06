@@ -42,12 +42,21 @@ class SimplifyApiConsuming {
     } on DioError catch (e) {
       log(e.message);
       debugPrint("dio error request is ${e.response?.data}");
-      if (dioErrorResponse != null) {
-        return dioErrorResponse(e.response!);
+      if (e.type == DioErrorType.response) {
+        if (dioErrorResponse != null) {
+          return dioErrorResponse(e.response!);
+        } else {
+          return State<ServerErrorModel>.error(
+            ServerErrorModel(
+                statusCode: e.response!.statusCode ?? 400,
+                errorMessage: "Something went wrong please try again",
+                data: null),
+          );
+        }
       } else {
         return State<ServerErrorModel>.error(
-          ServerErrorModel(
-              statusCode: e.response!.statusCode ?? 400,
+          const ServerErrorModel(
+              statusCode: 400,
               errorMessage: "Something went wrong please try again",
               data: null),
         );

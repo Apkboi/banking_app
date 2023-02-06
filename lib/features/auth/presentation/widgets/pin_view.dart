@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -107,7 +106,7 @@ class _PinViewState extends State<PinView> {
                                               color: Theme.of(context)
                                                   .colorScheme
                                                   .onPrimary,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.w500),
                                         )),
                             ),
                           )).toList()),
@@ -161,7 +160,7 @@ class PINController extends Cubit<PINState> {
   }
 }
 
-abstract class PINState extends Equatable {}
+abstract class PINState {}
 
 class PINInitialState extends PINState {
   @override

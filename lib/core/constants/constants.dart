@@ -5,10 +5,10 @@ class Constants {
  Constants._();
 
 
-
-   static get baseUrl {
-    return _config[_Config.baseUrl];
-  }
+  //
+  //  static get baseUrl {
+  //   return _config[_Config.baseUrl];
+  // }
 
 
   static const userCredentials = 'login_user_credentials';
@@ -16,6 +16,7 @@ class Constants {
   static const themeMode = "paybliz_theme_mode";
   static const firstTimeUserKey = "first_time_user_key";
   static const paystackApiKey = "sk_test_9e498a3e835b2403bf152afe55fbee89c6f2c3d1";
+  static const baseUrl = "https://mobile-banking-api.herokuapp.com";
 
   // static const paystackApiKey = "sk_test_9e498a3e835b2403bf152afe55fbee89c6f2c3d1";
 

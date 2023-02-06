@@ -13,7 +13,6 @@ class _SecurityState extends State<Security> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black12,
         body: Column(
           children: [
             Padding(
@@ -25,7 +24,7 @@ class _SecurityState extends State<Security> {
                  },
                  child:const  Icon(
                    Icons.arrow_back_ios,
-                   color: Colors.white,
+
                  ),
                ),
               const  SizedBox(
@@ -34,7 +33,7 @@ class _SecurityState extends State<Security> {
                 const Text(
                   "Security",
                   style: TextStyle(
-                      color: Colors.white,
+
                       fontSize: 17,
                       fontWeight: FontWeight.w600),
                 )
@@ -48,7 +47,7 @@ class _SecurityState extends State<Security> {
                 children: [
                   buildSecurityOption("Biometrics", true),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                     child: Row(
                       children: [
                         Container(
@@ -59,14 +58,13 @@ class _SecurityState extends State<Security> {
                             borderRadius: BorderRadius.circular(5)
                           ),
 
-                            child: Icon(Icons.pin,color: Colors.blue,)),
+                            child: const Icon(Icons.pin,color: Colors.blue,)),
                         const SizedBox(width: 20,),
                         const Text(
                           "Transaction Pin",
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: 17,
-                              color: Colors.white),
+                              fontSize: 17,),
                         ),
                         const Spacer(),
                         const Icon(Icons.arrow_forward_ios,color: Colors.grey,),
@@ -74,7 +72,7 @@ class _SecurityState extends State<Security> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                     child: Row(
                       children: [
                         Container(
@@ -85,14 +83,13 @@ class _SecurityState extends State<Security> {
                                 borderRadius: BorderRadius.circular(5)
                             ),
 
-                            child: Icon(Icons.remove_red_eye,color: Colors.yellow,)),
+                            child: const Icon(Icons.remove_red_eye,color: Colors.yellow,)),
                         const SizedBox(width: 30,),
                         const Text(
                           "Private Mode",
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: 17,
-                              color: Colors.white),
+                              fontSize: 17,),
                         ),
                         const Spacer(),
                         const Icon(Icons.arrow_forward_ios,color: Colors.grey,),
@@ -119,7 +116,7 @@ class _SecurityState extends State<Security> {
             height: 40,
             width: 40,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.greenAccent.withOpacity(0.1),
               borderRadius: BorderRadius.circular(5),
             ),
             child: const Icon(
@@ -133,9 +130,9 @@ class _SecurityState extends State<Security> {
           Text(
             title,
             style: const TextStyle(
-                fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white),
+                fontSize: 17, fontWeight: FontWeight.w500,),
           ),
-          Spacer(),
+          const Spacer(),
           Transform.scale(
               scale: 0.7,
               child: CupertinoSwitch(
@@ -156,7 +153,7 @@ class _SecurityState extends State<Security> {
             height: 40,
             width: 40,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.greenAccent.withOpacity(0.1),
               borderRadius: BorderRadius.circular(5),
             ),
             child: const Icon(
@@ -170,9 +167,9 @@ class _SecurityState extends State<Security> {
           Text(
             title,
             style: const TextStyle(
-                fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white),
+                fontSize: 17, fontWeight: FontWeight.w500,),
           ),
-          Spacer(),
+          const Spacer(),
           Transform.scale(
               scale: 0.7,
               child: CupertinoSwitch(

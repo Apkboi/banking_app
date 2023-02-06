@@ -3,25 +3,22 @@ import 'dart:developer';
 import 'package:banking_app/core/di/injector.dart';
 import 'package:banking_app/core/helpers/app_utils.dart';
 import 'package:banking_app/features/auth/presentation/blocs/auth_blocs/auths_bloc.dart';
-import 'package:banking_app/features/auth/presentation/blocs/auth_blocs/auths_bloc.dart';
-import 'package:banking_app/features/auth/presentation/screens/set_passcode_screen.dart';
 import 'package:banking_app/features/auth/presentation/widgets/dialogs/auth_error_dialog.dart';
 import 'package:banking_app/features/auth/presentation/widgets/pin_view.dart';
 import 'package:banking_app/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:line_icons/line_icon.dart';
 
 enum TransactionPinMode { normal, confirm, retry }
 
-class DuressPinScreen extends StatefulWidget {
-  const DuressPinScreen({Key? key}) : super(key: key);
+class SetPasscodeScreen extends StatefulWidget {
+  const SetPasscodeScreen({Key? key}) : super(key: key);
 
   @override
-  State<DuressPinScreen> createState() => _DuressPinScreenState();
+  State<SetPasscodeScreen> createState() => _SetPasscodeScreenState();
 }
 
-class _DuressPinScreenState extends State<DuressPinScreen> {
+class _SetPasscodeScreenState extends State<SetPasscodeScreen> {
   final _pinController = PINController();
   TransactionPinMode pinMode = TransactionPinMode.normal;
   String pin = '';
@@ -36,22 +33,34 @@ class _DuressPinScreenState extends State<DuressPinScreen> {
         return false;
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: BlocListener<AuthBloc, AuthState>(
-            bloc: bloc,
-            listener: _listenToDuressPinState,
+        // appBar: AppBar(
+        //   title: Row(
+        //     children: [
+        //       LineIcon.lock(),
+        //       const SizedBox(
+        //         width: 10,
+        //       ),
+        //       const Text('Set Transaction Pin'),
+        //     ],
+        //   ),
+        //   elevation: 0,
+        // ),
+        body: BlocListener<AuthBloc, AuthState>(
+          bloc: bloc,
+          listener: _listenToPasscodeState,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 const SizedBox(
-                  height: 60,
+                  height: 70,
                 ),
                 const Text(
-                  'NOTE : You can use this pin when ever you are in a duress condition to transfer your funds to suspense account',
-                  style: TextStyle(color: Colors.orange),
+                  'NOTE : This pin will be used to authorize you before accesing the app.',
+                  style: TextStyle(color: Colors.purple),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 Container(
                   height: 60,
@@ -73,7 +82,7 @@ class _DuressPinScreenState extends State<DuressPinScreen> {
                         height: 20,
                       ),
                       PinView(
-                          onDigitPressed: (int) {},
+                          onDigitPressed: (pin) {},
                           onDelete: () {},
                           onDone: (val) {
                             _processPin(val);
@@ -112,7 +121,7 @@ class _DuressPinScreenState extends State<DuressPinScreen> {
       if (pin == confirmPin) {
         _pinController.resetPin();
 
-        bloc.add(SetDuressPinEvent(duressPin: pin));
+        bloc.add(SetPasscodeEvent(passcode: pin));
       } else {
         _pinController.resetPin();
         pin = '';
@@ -131,26 +140,26 @@ class _DuressPinScreenState extends State<DuressPinScreen> {
 
   String getHintText() {
     if (pinMode == TransactionPinMode.normal) {
-      return 'Enter Duress Pin ';
+      return 'Enter Passcode ';
     } else if (pinMode == TransactionPinMode.confirm) {
-      return 'Confirm Duress Pin';
+      return 'Confirm Passcode';
     } else if (pinMode == TransactionPinMode.retry) {
-      return 'Enter Duress Pin';
+      return 'Enter Passcode';
     } else {
-      return 'Enter Duress Pin';
+      return 'Enter Passcode ';
     }
   }
 
-  void _listenToDuressPinState(BuildContext context, AuthState state) {
-    if (state is SetDuressPinLoadingState) {
+  void _listenToPasscodeState(BuildContext context, AuthState state) {
+    if (state is SetPasscodeLoadingState) {
       AppUtils.showAnimatedProgressDialog(context);
     }
-    if (state is SetDuressPinSuccessState) {
+    if (state is SetPasscodeSuccessState) {
       CustomSnackBar.showMessage(context,
-          message: 'Duress pin has been set successfully 💪🏿 ',
+          message: 'Passcode has been set successfully 💪🏿 ',
           backgroundColor: Colors.green);
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const SetPasscodeScreen(),
+        builder: (context) => const HomeScreen(),
       ));
     }
     if (state is AuthFailureState) {

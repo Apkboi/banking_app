@@ -1,3 +1,4 @@
+import 'package:banking_app/features/cards/presentation/screens/cards_tab.dart';
 import 'package:banking_app/features/home/presentation/screens/home_tab.dart';
 import 'package:banking_app/features/more/presentation/screens/more_tab.dart';
 import 'package:banking_app/features/pay/presentation/screens/pay_screen.dart';
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     const HomeTab(),
     const PayScreen(),
+    const CardsTab(),
     const TransactionsScreen(),
     const MoreTab(),
   ];
@@ -72,6 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
             GButton(
               icon: Icons.show_chart_rounded,
               text: 'Pay',
+            ),
+            GButton(
+              icon: LineIcons.creditCard,
+              text: 'Cards',
             ),
             GButton(
               icon: LineIcons.barChartAlt,

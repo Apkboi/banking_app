@@ -1,8 +1,11 @@
 import 'package:banking_app/core/theme/app_theme.dart';
-import 'package:banking_app/features/auth/presentation/screens/signup_screen.dart';
+import 'package:banking_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:banking_app/core/di/injector.dart' as di;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.setup();
   runApp(const MyApp());
 }
 
@@ -15,9 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Banking App',
       theme: AppTheme.lightTheme,
-      home: const SignUpScreen(),
+      home: const LoginScreen(),
     );
   }
 }
-
-

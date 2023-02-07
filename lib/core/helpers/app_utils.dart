@@ -24,8 +24,8 @@ class AppUtils {
                 ),
                 textButtonTheme: TextButtonThemeData(
                   style: TextButton.styleFrom(
-                    foregroundColor:
-                        Theme.of(context).primaryColor, // button text color
+                    // foregroundColor:
+                    //     Theme.of(context).primaryColor, // button text color
                   ),
                 ),
               ),
@@ -65,8 +65,8 @@ class AppUtils {
               entryModeIconColor: Theme.of(context).primaryColor),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor:
-                  Theme.of(context).primaryColor, // button text color
+              // foregroundColor:
+              //     Theme.of(context).primaryColor, // button text color
             ),
           ),
         ),
@@ -186,7 +186,8 @@ class AppUtils {
                   TextButton(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.transparent),
+                          // foregroundColor: Colors.transparent
+                          ),
                       onPressed:onDismiss ?? () {
                         Navigator.pop(context);
 
@@ -201,7 +202,8 @@ class AppUtils {
                   TextButton(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.transparent),
+                          // foregroundColor: Colors.transparent
+                      ),
                       onPressed:onConfirm ?? () {
                         Navigator.pop(context);
 

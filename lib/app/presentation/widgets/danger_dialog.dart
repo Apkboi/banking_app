@@ -60,11 +60,12 @@ class _DangerDialogState extends State<DangerDialog> {
             children: [
               Expanded(
                   child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.redAccent),
-                child: Text(widget.buttonText ?? 'Enter OTP'),
+                       onPressed: () {},
+                         style: TextButton.styleFrom(
+                         backgroundColor: Colors.white,
+                  // foregroundColor: Colors.redAccent),
+                      ),
+                       child: Text(widget.buttonText ?? 'Enter OTP'),
               ))
             ],
           )

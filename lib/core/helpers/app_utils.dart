@@ -147,7 +147,7 @@ class AppUtils {
     showDialog(
       context: context,
       builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
+        filter: ImageFilter.blur(sigmaY: 3, sigmaX: 3),
         child: AlertDialog(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

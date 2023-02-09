@@ -1,3 +1,4 @@
+import 'package:banking_app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class BeneficiaryItem extends StatefulWidget {
@@ -17,10 +18,10 @@ class _BeneficiaryItemState extends State<BeneficiaryItem> {
           Container(
             height: 50,
             width: 50,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.blue),
-            child:  Center(
-                child: Image.asset('assets/gif/sign_up_emoji.gif')
+            decoration: AppTheme.iconContainerDecoration(Colors.orange.withOpacity(0.1)).copyWith(
+              image: const DecorationImage(image: AssetImage('assets/jpg/person.jpg'),fit: BoxFit.cover,)
             ),
+
           ),
           // const CircleAvatar(
           //   backgroundColor: Colors.brown,
@@ -29,9 +30,9 @@ class _BeneficiaryItemState extends State<BeneficiaryItem> {
           const SizedBox(
             height: 5,
           ),
-          const Text(
-            'Emma',
-            style: TextStyle(fontWeight: FontWeight.w500),
+           const Text(
+            'Williams',
+            style: TextStyle(fontWeight: FontWeight.w300,fontSize: 13,color:Colors.grey),
           )
         ],
       ),

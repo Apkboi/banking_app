@@ -3,13 +3,11 @@ import 'dart:developer';
 import 'package:banking_app/core/di/injector.dart';
 import 'package:banking_app/core/helpers/app_utils.dart';
 import 'package:banking_app/features/auth/presentation/blocs/auth_blocs/auths_bloc.dart';
-import 'package:banking_app/features/auth/presentation/blocs/auth_blocs/auths_bloc.dart';
 import 'package:banking_app/features/auth/presentation/screens/duress_pin_screen.dart';
 import 'package:banking_app/features/auth/presentation/widgets/dialogs/auth_error_dialog.dart';
 import 'package:banking_app/features/auth/presentation/widgets/pin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:line_icons/line_icon.dart';
 
 enum TransactionPinMode { normal, confirm, retry }
 
@@ -36,18 +34,6 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
         return false;
       },
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Row(
-        //     children: [
-        //       LineIcon.lock(),
-        //       const SizedBox(
-        //         width: 10,
-        //       ),
-        //       const Text('Set Transaction Pin'),
-        //     ],
-        //   ),
-        //   elevation: 0,
-        // ),
         body: BlocListener<AuthBloc, AuthState>(
           bloc: bloc,
           listener: _listenToTransactionPinState,
@@ -80,7 +66,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(getHintText()),
+                      Text(getHintText(),style: const TextStyle(color: Colors.grey),),
                       const SizedBox(
                         height: 20,
                       ),

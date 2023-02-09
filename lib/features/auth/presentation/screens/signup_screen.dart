@@ -484,7 +484,7 @@ class _SignupForm2State extends State<_SignupForm2>
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text('Already have an account ?'),
+                      const Text('Already have an account ?',style: TextStyle(color: Colors.grey),),
                       const SizedBox(
                         width: 8,
                       ),

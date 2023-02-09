@@ -24,7 +24,7 @@ class _BillsScreenState extends State<BillsScreen> {
         child: Column(
           children:  [
             const SizedBox(height: 20,),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const TvPaymentScreen(),
@@ -37,7 +37,7 @@ class _BillsScreenState extends State<BillsScreen> {
                 color: Colors.lightBlueAccent,
               ),
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const InternetPaymentScreen(),
@@ -50,7 +50,7 @@ class _BillsScreenState extends State<BillsScreen> {
                 color: Colors.purple,
               ),
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const ElectricityPaymentScreen(),
@@ -63,7 +63,7 @@ class _BillsScreenState extends State<BillsScreen> {
                 color: Colors.orangeAccent,
               ),
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const BettingSubscriptionScreen(),

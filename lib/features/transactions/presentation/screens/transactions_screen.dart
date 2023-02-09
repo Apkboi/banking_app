@@ -24,15 +24,27 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           Row(
             children: [
               LineIcon.barChartAlt(),
-              const SizedBox(width: 10,),
-              const Text('Transaction History',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Transaction History',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Theme.of(context).colorScheme.onPrimary),
+              ),
             ],
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               const Expanded(child: SearchField()),
-              const SizedBox(width: 8,),
+              const SizedBox(
+                width: 8,
+              ),
               Container(
                 height: 50,
                 width: 50,
@@ -42,7 +54,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     borderRadius: BorderRadius.circular(8)),
                 child: Center(child: LineIcon.calendar()),
               ),
-              const SizedBox(width: 8,),
+              const SizedBox(
+                width: 8,
+              ),
               Container(
                 height: 50,
                 width: 50,
@@ -54,7 +68,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               )
             ],
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.zero,

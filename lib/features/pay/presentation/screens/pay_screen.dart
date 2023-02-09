@@ -1,3 +1,4 @@
+import 'package:banking_app/core/theme/app_theme.dart';
 import 'package:banking_app/features/home/presentation/widgets/beneficiary_item.dart';
 import 'package:banking_app/features/pay/presentation/screens/bills/bills_screen.dart';
 import 'package:banking_app/features/pay/presentation/screens/bills/buy_airtime_screen.dart';
@@ -30,15 +31,15 @@ class _PayScreenState extends State<PayScreen> {
               height: 60,
             ),
             Row(
-              children: const [
-                Icon(Icons.show_chart_rounded),
-                SizedBox(
+              children:  [
+                const Icon(Icons.show_chart_rounded),
+                const  SizedBox(
                   width: 10,
                 ),
                 Text(
                   "Pay",
                   style: TextStyle(
-                      color: Colors.black,
+                      color:Theme.of(context).colorScheme.onPrimary,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
@@ -50,10 +51,10 @@ class _PayScreenState extends State<PayScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                 Text(
                   "Beneficiaries",
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "view all",
@@ -77,15 +78,15 @@ class _PayScreenState extends State<PayScreen> {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            const Text(
+             Text(
               "Send Money",
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle( color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const BankTransferScreen(),
@@ -93,13 +94,18 @@ class _PayScreenState extends State<PayScreen> {
               },
               billTittle: 'Send to bank account',
               billDescription: 'Easily transfer to different banks',
-              icon: const Icon(
-                Icons.account_balance_rounded,
-                size: 25,
-                color: Colors.green,
+              icon: Container(
+                height: 50,
+                width: 50,
+                decoration: AppTheme.iconContainerDecoration(Colors.green.withOpacity(0.1)),
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  size: 25,
+                  color: Colors.green,
+                ),
               ),
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const BataToBeta(),
@@ -107,23 +113,28 @@ class _PayScreenState extends State<PayScreen> {
               },
               billTittle: 'Sent to Beta bank',
               billDescription: 'Easily send money to a beta bank account',
-              icon: LineIcon.alternateShield(
-                size: 25,
-                color: Colors.indigo,
+              icon: Container(
+                height: 50,
+                width: 50,
+                decoration: AppTheme.iconContainerDecoration(Colors.indigo.withOpacity(0.1)),
+                child: LineIcon.alternateShield(
+                  size: 25,
+                  color: Colors.indigo,
+                ),
               ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
+             Text(
               "Pay Bills",
               style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle(color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const BuyAirtimeScreen(),
@@ -131,12 +142,17 @@ class _PayScreenState extends State<PayScreen> {
               },
               billTittle: 'Buy Airtime',
               billDescription: 'Recharge any phone easily',
-              icon: LineIcon.mobilePhone(
-                size: 25,
-                color: Colors.orangeAccent,
+              icon: Container(
+                height: 50,
+                width: 50,
+                decoration: AppTheme.iconContainerDecoration(Colors.orange.withOpacity(0.1)),
+                child: LineIcon.mobilePhone(
+                  size: 25,
+                  color: Colors.orangeAccent,
+                ),
               ),
             ),
-            PayBills(
+            BillItem(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const BillsScreen(),
@@ -144,9 +160,15 @@ class _PayScreenState extends State<PayScreen> {
               },
               billTittle: 'Pay a bill',
               billDescription: 'Easily pay basic bills',
-              icon: LineIcon.wallet(
-                size: 25,
-                color: Colors.purple,
+              icon: Container(
+                height: 50,
+                width: 50,
+                decoration:
+                    AppTheme.iconContainerDecoration(Colors.purple.withOpacity(0.1)),
+                child: LineIcon.wallet(
+                  size: 25,
+                  color: Colors.purple,
+                ),
               ),
             )
           ],

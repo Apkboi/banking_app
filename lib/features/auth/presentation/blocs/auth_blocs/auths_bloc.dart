@@ -42,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(RegisterSuccessState(state.value));
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
-        emit(AuthFailureState(errorModel.data??[errorModel.errorMessage]));
+        emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
     } on Exception catch (e, stack) {
       log('${e.toString()}${stack.toString()}');
@@ -63,7 +63,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
 
-        emit(AuthFailureState(errorModel.data??[errorModel.errorMessage]));
+        emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
     } on Exception catch (e) {
       emit(const AuthFailureState(['Something went wrong please retry']));
@@ -80,7 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(SetTransactionPinSuccessState());
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
-        emit(AuthFailureState(errorModel.data??[errorModel.errorMessage]));
+        emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
     } on Exception catch (e) {
       emit(const AuthFailureState(["Something went wrong please retry"]));
@@ -97,7 +97,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(SetDuressPinSuccessState());
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
-        emit(AuthFailureState(errorModel.data??[errorModel.errorMessage]));
+        emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
     } on Exception catch (e) {
       emit(const AuthFailureState(["Something went wrong please retry"]));
@@ -112,14 +112,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       State state = await authRepository.setPassCode(event.passcode);
       if (state is SuccessState) {
         emit(SetPasscodeSuccessState());
-      } else if(state is ErrorState) {
+      } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
-        emit(AuthFailureState(errorModel.data??[errorModel.errorMessage]));
-
+        emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
     } on Exception catch (e) {
       emit(const AuthFailureState(["Something went wrong please retry"]));
-
     }
   }
 

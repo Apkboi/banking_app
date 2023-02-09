@@ -40,7 +40,7 @@ class _DangerDialogState extends State<DangerDialog> {
                 widget.title ?? 'Suspicious Transaction',
                 style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600),
               )
             ],
@@ -51,7 +51,7 @@ class _DangerDialogState extends State<DangerDialog> {
           Text(
             widget.message ??
                 'Sorry  a suspicious activity was notice from this transaction, please provide an OTP sent to your phone number (09012****11),',
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontSize: 13),
           ),
           const SizedBox(
             height: 16,
@@ -63,7 +63,7 @@ class _DangerDialogState extends State<DangerDialog> {
                        onPressed: () {},
                          style: TextButton.styleFrom(
                          backgroundColor: Colors.white,
-                  // foregroundColor: Colors.redAccent),
+                  foregroundColor: Colors.redAccent,
                       ),
                        child: Text(widget.buttonText ?? 'Enter OTP'),
               ))

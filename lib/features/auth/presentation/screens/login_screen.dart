@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:banking_app/app/presentation/widgets/circular_loader.dart';
 import 'package:banking_app/app/presentation/widgets/custom_button.dart';
 import 'package:banking_app/app/presentation/widgets/outlined_form_field.dart';
@@ -14,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:line_icons/line_icon.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -79,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   OutlinedFormField(
                     hint: 'Enter your email address.',
-                    preffix: LineIcon.mailBulk(),
+                    preffix: LineIcon.mailBulk(color: Colors.grey,),
                     controller: emailController,
                     enabled: fieldsEnabled,
                     validator: MultiValidator([
@@ -92,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   OutlinedFormField(
                     hint: 'Password.',
-                    preffix: LineIcon.lock(),
+                    preffix: LineIcon.lock(color: Colors.grey,),
                     enabled: fieldsEnabled,
                     onChange: (v) {
                       setState(() {});
@@ -108,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 16,
                   ),
                   CustomButton(
-                      onPressed: () {
+                      onPressed: fieldsEnabled ? () {
                         if (validate()) {
                           bloc.add(LoginEvent(
                               emailController.text, passwordController.text));
@@ -118,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         //     MaterialPageRoute(
                         //       builder: (context) => const HomeScreen(),
                         //     ));
-                      },
+                      }:null,
                       child: BlocConsumer<AuthBloc, AuthState>(
                           bloc: bloc,
                           listener: _listenToLoginState,
@@ -141,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text('Don\'t have an account ?'),
+                            const Text('Don\'t have an account ?',style: TextStyle(color: Colors.grey),),
                             const SizedBox(
                               width: 8,
                             ),
@@ -201,6 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     sigmaY: 3,
                     tileMode: TileMode.repeated),
                 child: Dialog(
+                  backgroundColor: Theme.of(context).cardColor,
                     child: WelcomeDialog(
                         profile: state.response.profile))),
           );
@@ -209,5 +208,9 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       }
 
+  }
+
+  bool isLoading(AuthState state){
+    return state is LoginLoadingState;
   }
 }

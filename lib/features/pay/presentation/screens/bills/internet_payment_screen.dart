@@ -29,7 +29,7 @@ class _InternetPaymentScreenState extends State<InternetPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Network provider'),
+                   Text('Network provider',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -71,7 +71,7 @@ class _InternetPaymentScreenState extends State<InternetPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Data plan'),
+                   Text('Data plan',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -113,7 +113,7 @@ class _InternetPaymentScreenState extends State<InternetPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Phone Number'),
+                   Text('Phone Number',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -128,7 +128,7 @@ class _InternetPaymentScreenState extends State<InternetPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OutlinedFormField extends StatefulWidget {
+
   const OutlinedFormField(
       {Key? key,
       required this.hint,
@@ -13,7 +15,8 @@ class OutlinedFormField extends StatefulWidget {
       this.controller,
       this.onChange,
       this.onFieldSubmitted,
-      this.enabled})
+      this.enabled,
+        this.inputFormatters})
       : super(key: key);
   final String hint;
   final bool? obscure;
@@ -26,6 +29,8 @@ class OutlinedFormField extends StatefulWidget {
   final void Function(String)? onFieldSubmitted;
   final String? Function(String?)? validator;
   final bool? enabled;
+  final List<TextInputFormatter>? inputFormatters;
+
 
   @override
   State<OutlinedFormField> createState() => _OutlinedFormFieldState();
@@ -42,6 +47,7 @@ class _OutlinedFormFieldState extends State<OutlinedFormField> {
         onChanged: widget.onChange,
         keyboardType: widget.inputType,
         onFieldSubmitted: widget.onFieldSubmitted,
+        inputFormatters: widget.inputFormatters,
         obscureText: widget.obscure == null ? false : widget.obscure!,
         style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
         decoration: InputDecoration(
@@ -61,8 +67,10 @@ class _OutlinedFormFieldState extends State<OutlinedFormField> {
             hintText: widget.hint,
             suffixIcon: widget.suffix,
             prefixIcon: widget.preffix,
+
+            iconColor: Colors.grey,
             enabled: widget.enabled ?? true,
-            prefixIconColor: Colors.blueGrey,
+            prefixIconColor: Colors.grey,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
             suffixIconColor: Theme.of(context).colorScheme.primary,

@@ -14,7 +14,7 @@ class _ElectricityPaymentScreenState extends State<ElectricityPaymentScreen> {
     return  Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Electricity bills'),
+        title:  Text('Electricity bills',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -30,7 +30,7 @@ class _ElectricityPaymentScreenState extends State<ElectricityPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Electricity provider'),
+                   Text('Electricity provider',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -72,7 +72,7 @@ class _ElectricityPaymentScreenState extends State<ElectricityPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Package'),
+                   Text('Package',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -114,7 +114,7 @@ class _ElectricityPaymentScreenState extends State<ElectricityPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('User ID'),
+                   Text('User ID',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -129,7 +129,7 @@ class _ElectricityPaymentScreenState extends State<ElectricityPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

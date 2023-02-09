@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PayBills extends StatefulWidget {
-
-  const PayBills(
+class BillItem extends StatefulWidget {
+  const BillItem(
       {Key? key,
       required this.onTap,
       required this.billTittle,
@@ -14,24 +13,24 @@ class PayBills extends StatefulWidget {
   final String billDescription;
   final Widget icon;
 
-
   @override
-  State<PayBills> createState() => _PayBillsState();
+  State<BillItem> createState() => _BillItemState();
 }
 
-class _PayBillsState extends State<PayBills> {
+class _BillItemState extends State<BillItem> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: widget.onTap,
+
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             widget.icon,
             const SizedBox(
-              width: 10,
+              width: 12,
             ),
             Expanded(
               child: Column(
@@ -39,10 +38,10 @@ class _PayBillsState extends State<PayBills> {
                 children: [
                   Text(
                     widget.billTittle,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 16,
-
+                      color:Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 13,
                     ),
                   ),
                   const SizedBox(
@@ -53,9 +52,9 @@ class _PayBillsState extends State<PayBills> {
                 ],
               ),
             ),
-            Icon(
+            const Icon(
               Icons.arrow_forward_ios_rounded,
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.grey,
               size: 16,
             )
           ],

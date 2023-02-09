@@ -17,7 +17,9 @@ class _WelcomeDialogState extends State<WelcomeDialog> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+
       child: Column(
+
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(

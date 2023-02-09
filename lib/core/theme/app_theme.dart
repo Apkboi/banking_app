@@ -15,16 +15,21 @@ class AppTheme {
     fontFamily: 'Poppins',
     cardColor: app_colors.lightCardColor,
     primaryColor: app_colors.primaryColor,
+
     bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: app_colors.lightBottomSheetColor),
     appBarTheme: AppBarTheme(
       color: app_colors.lightBackgroundColor,
+
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
         statusBarColor: app_colors.white,
       ),
       toolbarTextStyle: const TextStyle(
         color: app_colors.black,
+
       ),
+      titleSpacing: 0,
+
       iconTheme: const IconThemeData(
         color: Colors.blueGrey,
       ),
@@ -64,15 +69,15 @@ class AppTheme {
   //   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
 
   static final ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: const Color(0xFF1f1d2b),
-    cardColor: const Color(0xFF252836),
+    scaffoldBackgroundColor: const Color(0xFF18191e),
+    cardColor: const Color(0xFF282a37),
     bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: app_colors.darkBottomSheetColor),
     fontFamily: 'Poppins',
     appBarTheme: AppBarTheme(
-      color: const Color(0xFF1f1d2b),
+      color: const Color(0xFF282a37),
       systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-        statusBarColor: const Color(0xFF121212),
+        statusBarColor: const Color(0xFF131313),
       ),
       iconTheme: const IconThemeData(
         color: Colors.white,
@@ -299,4 +304,8 @@ class AppTheme {
         // )
         // )
       );
+
+
+ static BoxDecoration iconContainerDecoration(Color color) =>BoxDecoration(
+  borderRadius: BorderRadius.circular(12), color: color);
 }

@@ -13,6 +13,7 @@ class _SearchFieldState extends State<SearchField> {
     return TextField(
       decoration: InputDecoration(
           hintText: 'Search',
+          hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: const Icon(
             Icons.search_rounded,
             color: Colors.black,

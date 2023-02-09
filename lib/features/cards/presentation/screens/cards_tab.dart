@@ -1,4 +1,9 @@
+import 'package:banking_app/core/helpers/app_utils.dart';
+import 'package:banking_app/features/cards/presentation/widgets/card_widget.dart';
+import 'package:banking_app/features/cards/presentation/widgets/edit_card_sheet.dart';
+import 'package:banking_app/features/pay/presentation/widgets/bills_item.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
 
 class CardsTab extends StatefulWidget {
   const CardsTab({Key? key}) : super(key: key);
@@ -8,120 +13,146 @@ class CardsTab extends StatefulWidget {
 }
 
 class _CardsTabState extends State<CardsTab> {
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(color: Colors.black, width: 2)),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 70,
-                      ),
-                      const Text(
-                        "Credit Card",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    "MIS TARJETAS",
-                    style: TextStyle(
-                        color: Colors.black.withOpacity(0.5), fontSize: 13),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 200,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          buildCardContainer("assets/jpg/images.jpg"),
-                          buildCardContainer("assets/jpeg/visacard.jpeg"),
-                        ],
-                      );
-                    }),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-              child: Text(
-                "RECENT TRANSACTIONS",
-                style: TextStyle(
-                    fontSize: 14, color: Colors.black.withOpacity(0.5)),
-              ),
-            ),
-            Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                    shrinkWrap: true,
-                    physics:const BouncingScrollPhysics(),
+    return Scaffold(
 
-                    itemBuilder: (context, index) => recentTransactions(
-                        "ABR",
-                        "23",
-                        "\$6.00",
-                        "Recarga cueta Movilplata",
-                        "MasterCard****6541")))
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 60,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Text('Cards', style: TextStyle(color: Theme
+                .of(context)
+                .colorScheme
+                .onPrimary, fontSize: 18),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Your cards",
+                  style: TextStyle(
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .onPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+                TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                        foregroundColor: Colors.white, backgroundColor: Theme
+                        .of(context)
+                        .primaryColor),
+                    child: Row(
+                      children: [
+                        const Text('Request new card'),
+                        const SizedBox(width: 10,),
+                        LineIcon.plus(
+                          size: 16,
+                        )
+                      ],
+                    ))
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 210,
+            child: PageView.builder(
+              controller: PageController(viewportFraction: 0.8),
+              allowImplicitScrolling: true,
+              scrollDirection: Axis.horizontal,
+              onPageChanged: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                var _scale = currentIndex == index ? 1.0 : 0.9;
+                return TweenAnimationBuilder<double>(
+                  curve: Curves.easeIn,
+                  duration: const Duration(milliseconds: 335),
+                  tween: Tween(begin: _scale, end: _scale),
+                  builder: (context, value, child) {
+                    return Transform.scale(
+                      scale: value,
+                      child: child,
+                    );
+                  },
+                  child: CardWidget(
+                    selected: index == currentIndex,
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+            child: Text(
+              "Manage Cards",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .onPrimary,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                BillItem(
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context, builder: (context) => const EditCardSheet(),);
+                  },
+                  billTittle: 'Edit Card',
+                  billDescription:
+                  'You can choose to change card pin and limits.',
+                  icon: LineIcon.creditCard(
+                    color: Colors.orangeAccent,
+                  ),
+                ),
+                BillItem(
+                  onTap: () {
+                    AppUtils.showErrorDialog(context,
+                        title: 'Block card',
+                        buttonText: 'Continue',
+                        message:
+                        'Blocking your card will temporarily disable your card are you sure you want to continue ?');
+                  },
+                  billTittle: 'Block card',
+                  billDescription:
+                  'You can choose to temporarily disable card.',
+                  icon: LineIcon.ban(
+                    color: Colors.redAccent,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-buildCardContainer(String image) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-    child: Container(
-      height: 200,
-      width: 300,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
-    ),
-  );
-}
-
-recentTransactions(
-    String shrtDesc, String num, String amount, String text, String suText) {
+recentTransactions(String shrtDesc, String num, String amount, String text,
+    String suText) {
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 20,

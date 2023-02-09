@@ -15,13 +15,21 @@ class _TvPaymentScreenState extends State<TvPaymentScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Tv Subscription'),
+
+        title: Text(
+          'Tv Subscription',
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary, fontSize: 16),
+        ),
+        titleSpacing: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(
           children: [
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +37,11 @@ class _TvPaymentScreenState extends State<TvPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Provider'),
+                  Text(
+                    'Provider',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -71,7 +83,11 @@ class _TvPaymentScreenState extends State<TvPaymentScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Package'),
+                  Text(
+                    'Package',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -113,7 +129,11 @@ class _TvPaymentScreenState extends State<TvPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Smart card number'),
+                  Text(
+                    'Smart card number',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -128,7 +148,11 @@ class _TvPaymentScreenState extends State<TvPaymentScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                  Text(
+                    'Amount',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),

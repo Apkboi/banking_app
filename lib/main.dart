@@ -1,6 +1,5 @@
 import 'package:banking_app/core/theme/app_theme.dart';
 import 'package:banking_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:banking_app/features/cards/presentation/screens/cards_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:banking_app/core/di/injector.dart' as di;
 
@@ -18,8 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banking App',
-      theme: AppTheme.lightTheme,
-      home: const CardsTab(),
+      theme: AppTheme.darkTheme,
+      home: const LoginScreen(),
     );
   }
 }

@@ -27,7 +27,7 @@ class _BataToBetaState extends State<BataToBeta> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Beta Username'),
+                   Text('Beta Username',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -69,7 +69,7 @@ class _BataToBetaState extends State<BataToBeta> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Account Number'),
+                   Text('Account Number',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -84,7 +84,7 @@ class _BataToBetaState extends State<BataToBeta> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -101,7 +101,7 @@ class _BataToBetaState extends State<BataToBeta> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Transaction Category'),
+                   Text('Transaction Category',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -146,7 +146,7 @@ class _BataToBetaState extends State<BataToBeta> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Narration'),
+                   Text('Narration',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

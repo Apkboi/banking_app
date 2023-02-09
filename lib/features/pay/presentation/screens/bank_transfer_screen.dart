@@ -28,7 +28,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Bank'),
+                   Text('Bank',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -70,7 +70,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Account Number'),
+                   Text('Account Number',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -85,7 +85,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -102,7 +102,7 @@ class _BankTransferScreenState extends State<BankTransferScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Narration'),
+                   Text('Narration',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

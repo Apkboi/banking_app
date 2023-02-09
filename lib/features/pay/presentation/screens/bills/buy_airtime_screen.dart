@@ -23,7 +23,7 @@ class _BuyAirtimeScreenState extends State<BuyAirtimeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20,),
-            const Text(' #Recent numbers',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+             Text(' #Recent numbers',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Theme.of(context).colorScheme.onPrimary),),
             const SizedBox(height: 10,),
             SizedBox(
               height: 80,
@@ -32,17 +32,17 @@ class _BuyAirtimeScreenState extends State<BuyAirtimeScreen> {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Column(
-                    children: const [
-                      CircleAvatar(
+                    children:  const [
+                     CircleAvatar(
                         backgroundColor: Colors.yellow,
                         child: Center(
                           child: Text('MTN',style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 12),),
                         ),
                       ),
-                      SizedBox(
+                     SizedBox(
                         height: 8,
                       ),
-                      Text('0801234567',style: TextStyle(fontSize: 13),)
+                      Text('0801234567',style: TextStyle(fontSize: 13,color: Colors.grey),)
                     ],
                   ),
                 ),
@@ -56,7 +56,7 @@ class _BuyAirtimeScreenState extends State<BuyAirtimeScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -72,7 +72,7 @@ class _BuyAirtimeScreenState extends State<BuyAirtimeScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text('Beta Username'),
+                   Text('Select Network',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -114,7 +114,7 @@ class _BuyAirtimeScreenState extends State<BuyAirtimeScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Phone Number'),
+                   Text('Phone Number',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

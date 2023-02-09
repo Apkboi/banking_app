@@ -32,7 +32,11 @@ class _BettingSubscriptionScreenState extends State<BettingSubscriptionScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Service provider'),
+                  Text(
+                    'Service provider',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -74,7 +78,7 @@ class _BettingSubscriptionScreenState extends State<BettingSubscriptionScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Package'),
+                   Text('Package',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -116,7 +120,7 @@ class _BettingSubscriptionScreenState extends State<BettingSubscriptionScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Customer ID'),
+                   Text('Customer ID',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),
@@ -131,7 +135,7 @@ class _BettingSubscriptionScreenState extends State<BettingSubscriptionScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  const Text('Amount'),
+                   Text('Amount',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
                   const SizedBox(
                     height: 5,
                   ),

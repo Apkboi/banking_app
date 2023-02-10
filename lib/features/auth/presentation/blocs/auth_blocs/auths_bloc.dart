@@ -4,10 +4,12 @@ import 'dart:developer';
 import 'package:banking_app/app/data/models/server_error_model.dart';
 import 'package:banking_app/app/data/models/state.dart';
 import 'package:banking_app/core/constants/storage_keys.dart';
+import 'package:banking_app/core/di/injector.dart';
 import 'package:banking_app/core/helpers/storage_helper.dart';
 import 'package:banking_app/features/auth/data/models/auth_success_response.dart';
 import 'package:banking_app/features/auth/data/models/register_payload.dart';
 import 'package:banking_app/features/auth/dormain/repos/auth_repository.dart';
+import 'package:banking_app/features/profile/dormain/repository/local/profile_store.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -59,6 +61,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (state is SuccessState) {
         AuthSuccessResponse response = state.value;
         cacheToken(response.profile.apiToken);
+        injector.get<ProfileStore>().cacheUser(response.profile);
         emit(LoginSuccessState(state.value));
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;

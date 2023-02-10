@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:banking_app/core/di/injector.dart';
 import 'package:banking_app/features/home/presentation/widgets/beneficiary_item.dart';
 import 'package:banking_app/features/home/presentation/widgets/topup_sheet.dart';
+import 'package:banking_app/features/profile/dormain/repository/local/profile_store.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icon.dart';
@@ -28,18 +32,20 @@ class _HomeTabState extends State<HomeTab> {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
-                      const  Text(
+                    children: [
+                      const Text(
                         'Hello Williams,',
                         style: TextStyle(color: Colors.grey),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                        Text(
+                      Text(
                         'Welcome Back',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600,color: Theme.of(context).colorScheme.onPrimary),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onPrimary),
                       )
                     ],
                   ),
@@ -48,8 +54,7 @@ class _HomeTabState extends State<HomeTab> {
                   radius: 25,
                   backgroundColor: Colors.blueGrey,
                   child: Center(
-                      child: Image.asset('assets/gif/sign_up_emoji.gif')
-                  ),
+                      child: Image.asset('assets/gif/sign_up_emoji.gif')),
                 )
               ],
             ),
@@ -92,11 +97,13 @@ class _HomeTabState extends State<HomeTab> {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       Text(
                         'Recent Transactions',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16,color: Theme.of(context).colorScheme.onPrimary),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Theme.of(context).colorScheme.onPrimary),
                       ),
                       const SizedBox(
                         height: 6,
@@ -145,11 +152,13 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       decoration: BoxDecoration(
-          color: Colors.black, borderRadius: BorderRadius.circular(8),
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(8),
           image: const DecorationImage(
-              image: AssetImage('assets/jpeg/card_bg.jpeg',),
-              fit: BoxFit.cover)
-      ),
+              image: AssetImage(
+                'assets/jpeg/card_bg.jpeg',
+              ),
+              fit: BoxFit.cover)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -175,10 +184,15 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
             ),
           ),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
+              log((await injector.get<ProfileStore>().getUserProfile())
+                  !.fullname
+                  .toString());
               showModalBottomSheet(
                 backgroundColor: Colors.transparent,
-                context: context, builder: (context) => const TopUpSheet(),);
+                context: context,
+                builder: (context) => const TopUpSheet(),
+              );
             },
             child: const CircleAvatar(
               radius: 22,

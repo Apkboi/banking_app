@@ -2,10 +2,12 @@ import 'package:banking_app/core/theme/app_theme.dart';
 import 'package:banking_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:banking_app/core/di/injector.dart' as di;
+import 'package:hive_flutter/adapters.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.setup();
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 

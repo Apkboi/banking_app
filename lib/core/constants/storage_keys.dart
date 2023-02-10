@@ -35,3 +35,8 @@ class StorageKeys {
   // static String lastname = 'FIRSTNAME';
   // static String transactionKey = 'transaction pin';
 }
+
+class HiveStoreKeys{
+  static const String userData = 'user_data';
+  static const String userProfile = 'user_profile';
+}

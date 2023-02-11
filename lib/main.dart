@@ -6,8 +6,9 @@ import 'package:hive_flutter/adapters.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await di.setup();
   await Hive.initFlutter();
+  await di.setup();
+
   runApp(const MyApp());
 }
 

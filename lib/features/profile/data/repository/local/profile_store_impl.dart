@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:banking_app/app/data/repository/local/hive_store_impl.dart';
 import 'package:banking_app/core/constants/storage_keys.dart';
@@ -14,16 +14,13 @@ class ProfileStoreImpl extends ProfileStore {
 
   @override
   Future<void> cacheUser(Profile profile) async {
-    store.set(HiveStoreKeys.userProfile, profile);
-    log('User cached');
+    await store.set(HiveStoreKeys.userProfile, profile.toJson());
   }
 
   @override
   Future<Profile>? getUserProfile() async {
     var user = await store.get(HiveStoreKeys.userProfile);
-    log(user.toString());
-
-    return user;
+    return Profile.fromJson(jsonDecode(user.toString()));
   }
 
   Future<void> init() async {

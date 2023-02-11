@@ -62,13 +62,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         AuthSuccessResponse response = state.value;
         cacheToken(response.profile.apiToken);
         injector.get<ProfileStore>().cacheUser(response.profile);
+        injector.get<ProfileStore>().getUserProfile();
         emit(LoginSuccessState(state.value));
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
 
         emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
-    } on Exception catch (e) {
+    } on Exception catch (e,stck) {
+      log('${stck.toString()} ${e.toString()}');
       emit(const AuthFailureState(['Something went wrong please retry']));
     }
   }

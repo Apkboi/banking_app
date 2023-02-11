@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:banking_app/app/dormain/repository/local/local_store.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -24,6 +26,10 @@ class HiveStore extends LocalStore {
 
   @override
   Future<void> set<T>(String key, T value) async {
-    await _store?.put(key, value);
+    try {
+      await _store?.put(key, value);
+    } on Exception catch (e) {
+      log(e.toString());
+    }
   }
 }

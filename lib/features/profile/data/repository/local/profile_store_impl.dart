@@ -1,12 +1,13 @@
-import 'dart:convert';
+import 'dart:developer';
 
 import 'package:banking_app/app/data/repository/local/hive_store_impl.dart';
+import 'package:banking_app/app/data/repository/local/share_preference_store.dart';
 import 'package:banking_app/core/constants/storage_keys.dart';
 import 'package:banking_app/features/auth/data/models/auth_success_response.dart';
 import 'package:banking_app/features/profile/dormain/repository/local/profile_store.dart';
 
 class ProfileStoreImpl extends ProfileStore {
-  final store = HiveStore(HiveStoreKeys.userData);
+  final store = SharedPreferenceStore();
 
   ProfileStoreImpl() {
     init();
@@ -20,10 +21,9 @@ class ProfileStoreImpl extends ProfileStore {
   @override
   Future<Profile>? getUserProfile() async {
     var user = await store.get(HiveStoreKeys.userProfile);
-    return Profile.fromJson(jsonDecode(user.toString()));
+
+    return Profile.fromJson(Map.from(user));
   }
 
-  Future<void> init() async {
-    await store.init();
-  }
+  Future<void> init() => store.init();
 }

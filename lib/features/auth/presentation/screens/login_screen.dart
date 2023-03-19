@@ -111,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           bloc.add(LoginEvent(
                               emailController.text, passwordController.text));
                         }
+
                         // Navigator.pushReplacement(
                         //     context,
                         //     MaterialPageRoute(

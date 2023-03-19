@@ -18,20 +18,19 @@ class _CardsTabState extends State<CardsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 60,
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Text('Cards', style: TextStyle(color: Theme
-                .of(context)
-                .colorScheme
-                .onPrimary, fontSize: 18),),
+            child: Text(
+              'Cards',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimary, fontSize: 18),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(18.0),
@@ -41,23 +40,21 @@ class _CardsTabState extends State<CardsTab> {
                 Text(
                   "Your cards",
                   style: TextStyle(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onPrimary,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       fontSize: 16,
                       fontWeight: FontWeight.w500),
                 ),
                 TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
-                        foregroundColor: Colors.white, backgroundColor: Theme
-                        .of(context)
-                        .primaryColor),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Theme.of(context).primaryColor),
                     child: Row(
                       children: [
                         const Text('Request new card'),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         LineIcon.plus(
                           size: 16,
                         )
@@ -103,10 +100,7 @@ class _CardsTabState extends State<CardsTab> {
               "Manage Cards",
               style: TextStyle(
                   fontSize: 16,
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onPrimary,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -118,11 +112,13 @@ class _CardsTabState extends State<CardsTab> {
                   onTap: () {
                     showModalBottomSheet(
                       backgroundColor: Colors.transparent,
-                      context: context, builder: (context) => const EditCardSheet(),);
+                      context: context,
+                      builder: (context) => const EditCardSheet(),
+                    );
                   },
                   billTittle: 'Edit Card',
                   billDescription:
-                  'You can choose to change card pin and limits.',
+                      'You can choose to change card pin and limits.',
                   icon: LineIcon.creditCard(
                     color: Colors.orangeAccent,
                   ),
@@ -133,11 +129,11 @@ class _CardsTabState extends State<CardsTab> {
                         title: 'Block card',
                         buttonText: 'Continue',
                         message:
-                        'Blocking your card will temporarily disable your card are you sure you want to continue ?');
+                            'Blocking your card will temporarily disable your card are you sure you want to continue ?');
                   },
                   billTittle: 'Block card',
                   billDescription:
-                  'You can choose to temporarily disable card.',
+                      'You can choose to temporarily disable card.',
                   icon: LineIcon.ban(
                     color: Colors.redAccent,
                   ),
@@ -151,8 +147,8 @@ class _CardsTabState extends State<CardsTab> {
   }
 }
 
-recentTransactions(String shrtDesc, String num, String amount, String text,
-    String suText) {
+recentTransactions(
+    String shrtDesc, String num, String amount, String text, String suText) {
   return Padding(
     padding: const EdgeInsets.symmetric(
       horizontal: 20,

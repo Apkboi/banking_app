@@ -53,6 +53,9 @@ dependencies:
   fluttertoast: ^8.1.2
   form_field_validator: ^1.1.0
   hive_flutter: ^1.1.0
+  firebase_core: ^2.5.0
+  firebase_messaging: ^14.2.2
+  firebase_analytics: ^10.1.1
 
 dev_dependencies:
   flutter_test:

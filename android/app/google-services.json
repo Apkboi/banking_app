@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030792127075",
+    "project_id": "banking-app-c014f",
+    "storage_bucket": "banking-app-c014f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030792127075:android:cf11b0d5d0dd2af09c0e56",
+        "android_client_info": {
+          "package_name": "com.example.banking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030792127075-7m9khnt168uu3f9t1kvslka42bqjc22r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChklY9uH_NktobvH6Ic8FLj0_wHI8IAqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030792127075-7m9khnt168uu3f9t1kvslka42bqjc22r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

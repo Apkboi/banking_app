@@ -5,8 +5,11 @@ import 'package:hive_flutter/adapters.dart';
 
 class HiveStore extends LocalStore {
   final String key;
+
   HiveStore(this.key);
+
   Box? _store;
+
   @override
   Future<void> clearAll() async {
     _store?.clear();

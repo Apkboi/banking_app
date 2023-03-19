@@ -17,6 +17,7 @@ class Constants {
   static const firstTimeUserKey = "first_time_user_key";
   static const paystackApiKey = "sk_test_9e498a3e835b2403bf152afe55fbee89c6f2c3d1";
   static const baseUrl = "https://mobile-banking-api.herokuapp.com";
+  static const oneSignalAppId = "8c12af6c-de37-48b5-bbfc-51e48b47d805";
 
   // static const paystackApiKey = "sk_test_9e498a3e835b2403bf152afe55fbee89c6f2c3d1";
 

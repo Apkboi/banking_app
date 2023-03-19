@@ -40,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       State state = await authRepository.register(event.payload);
       if (state is SuccessState) {
         AuthSuccessResponse response = state.value;
-        cacheToken(response.profile.apiToken);
+        updateLoginCache(response.profile.apiToken);
         emit(RegisterSuccessState(state.value));
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
@@ -60,7 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       State state = await authRepository.login(event.email, event.password);
       if (state is SuccessState) {
         AuthSuccessResponse response = state.value;
-        cacheToken(response.profile.apiToken);
+        updateLoginCache(response.profile.apiToken);
         injector.get<ProfileStore>().cacheUser(response.profile);
         injector.get<ProfileStore>().getUserProfile();
         emit(LoginSuccessState(state.value));
@@ -69,7 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthFailureState(errorModel.data ?? [errorModel.errorMessage]));
       }
-    } on Exception catch (e,stck) {
+    } on Exception catch (e, stck) {
       log('${stck.toString()} ${e.toString()}');
       emit(const AuthFailureState(['Something went wrong please retry']));
     }
@@ -126,7 +126,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  void cacheToken(String token) {
+  void updateLoginCache(String token) {
     StorageHelper.setString(StorageKeys.token, token);
+    StorageHelper.setBoolean(StorageKeys.stayLoggedIn, true);
   }
 }

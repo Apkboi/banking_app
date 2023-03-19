@@ -9,14 +9,14 @@ import '../widgets/bills_item.dart';
 import 'bank_transfer_screen.dart';
 import 'beta_to_beta_transfer.dart';
 
-class PayScreen extends StatefulWidget {
-  const PayScreen({Key? key}) : super(key: key);
+class PayTab extends StatefulWidget {
+  const PayTab({Key? key}) : super(key: key);
 
   @override
-  State<PayScreen> createState() => _PayScreenState();
+  State<PayTab> createState() => _PayTabState();
 }
 
-class _PayScreenState extends State<PayScreen> {
+class _PayTabState extends State<PayTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +111,7 @@ class _PayScreenState extends State<PayScreen> {
                   builder: (context) => const BataToBeta(),
                 ));
               },
-              billTittle: 'Sent to Beta bank',
+              billTittle: 'Send to Beta bank',
               billDescription: 'Easily send money to a beta bank account',
               icon: Container(
                 height: 50,

@@ -4,8 +4,11 @@ import 'package:banking_app/core/di/injector.dart';
 import 'package:banking_app/features/home/presentation/widgets/beneficiary_item.dart';
 import 'package:banking_app/features/home/presentation/widgets/topup_sheet.dart';
 import 'package:banking_app/features/profile/dormain/repository/local/profile_store.dart';
+import 'package:banking_app/features/profile/presentation/blocs/profile_bloc.dart';
+import 'package:banking_app/features/profile/presentation/blocs/profile_bloc.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_icons/line_icon.dart';
 
 class HomeTab extends StatefulWidget {
@@ -16,6 +19,15 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  late ProfileBloc bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    bloc = injector.get<ProfileBloc>();
+    bloc.add(GetCachedUserEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,36 +39,46 @@ class _HomeTabState extends State<HomeTab> {
             const SizedBox(
               height: 60,
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            BlocBuilder<ProfileBloc, ProfileState>(
+              bloc: bloc,
+              builder: (context, state) {
+                if (state is CachedProfileFetchedState) {
+                  return Row(
                     children: [
-                      const Text(
-                        'Hello Williams,',
-                        style: TextStyle(color: Colors.grey),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hello ${state.profile.fullname},',
+                              style: const TextStyle(color: Colors.grey),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Welcome Back',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary),
+                            )
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Welcome Back',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).colorScheme.onPrimary),
+                      CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.blueGrey,
+                        child: Center(
+                            child: Image.asset('assets/gif/sign_up_emoji.gif')),
                       )
                     ],
-                  ),
-                ),
-                CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.blueGrey,
-                  child: Center(
-                      child: Image.asset('assets/gif/sign_up_emoji.gif')),
-                )
-              ],
+                  );
+                }
+
+                return const SizedBox();
+              },
             ),
             const SizedBox(
               height: 25,
@@ -185,8 +207,8 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
           ),
           GestureDetector(
             onTap: () async {
-              log((await injector.get<ProfileStore>().getUserProfile())
-                  !.fullname
+              log((await injector.get<ProfileStore>().getUserProfile())!
+                  .fullname
                   .toString());
               showModalBottomSheet(
                 backgroundColor: Colors.transparent,

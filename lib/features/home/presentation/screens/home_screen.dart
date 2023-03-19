@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
   List<Widget> pages = [
     const HomeTab(),
-    const PayScreen(),
+    const PayTab(),
     const CardsTab(),
     const TransactionsScreen(),
     const MoreTab(),

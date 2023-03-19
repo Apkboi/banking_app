@@ -1,27 +1,47 @@
+import 'package:banking_app/core/constants/storage_keys.dart';
+import 'package:banking_app/core/helpers/storage_helper.dart';
+import 'package:banking_app/core/services/push_notification_service.dart';
 import 'package:banking_app/core/theme/app_theme.dart';
 import 'package:banking_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:banking_app/features/home/presentation/screens/home_screen.dart';
+import 'package:banking_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:banking_app/core/di/injector.dart' as di;
 import 'package:hive_flutter/adapters.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await PushNotificationService.initialize();
   await Hive.initFlutter();
   await di.setup();
-
-  runApp(const MyApp());
+  final firstScreen = await getFirstScreen();
+  await Future.delayed(const Duration(milliseconds: 2500));
+  runApp(MyApp(
+    firstScreen: firstScreen,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Widget firstScreen;
+
+  const MyApp({super.key, required this.firstScreen});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banking App',
-      theme: AppTheme.darkTheme,
-      home: const LoginScreen(),
+      theme: AppTheme.lightTheme,
+      home: firstScreen,
     );
   }
+}
+
+Future<Widget> getFirstScreen() async {
+  bool stayLogin =
+      await StorageHelper.getBoolean(StorageKeys.stayLoggedIn, false);
+
+  return stayLogin ? const HomeScreen() : const LoginScreen();
 }

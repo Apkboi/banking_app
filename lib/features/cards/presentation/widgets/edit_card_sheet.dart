@@ -5,6 +5,7 @@ import 'package:banking_app/features/home/presentation/screens/top_up_from_bank_
 import 'package:banking_app/features/pay/presentation/widgets/bills_item.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icon.dart';
+
 class EditCardSheet extends StatefulWidget {
   const EditCardSheet({Key? key}) : super(key: key);
 
@@ -16,14 +17,11 @@ class _EditCardSheetState extends State<EditCardSheet> {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
+      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Theme
-              .of(context)
-              .bottomSheetTheme
-              .backgroundColor,
+          color: Theme.of(context).bottomSheetTheme.backgroundColor,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         margin: const EdgeInsets.all(12),
@@ -33,14 +31,22 @@ class _EditCardSheetState extends State<EditCardSheet> {
           children: [
             Text(
               'Edit card.',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500,color: Theme.of(context).colorScheme.onPrimary),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.onPrimary),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             BillItem(
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) =>const ChangeCardPinScreen(),));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChangeCardPinScreen(),
+                    ));
               },
               billTittle: 'Change card pin',
               billDescription: 'Update the pin for this card.',
@@ -55,12 +61,16 @@ class _EditCardSheetState extends State<EditCardSheet> {
                     color: Colors.blueGrey,
                   ),
                 ),
-              ),),
+              ),
+            ),
             BillItem(
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => const TopUpFromBankScreen(),));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TopUpFromBankScreen(),
+                    ));
               },
               billTittle: 'Change card duress pin',
               billDescription: 'Update the limit which this card can spend.',
@@ -70,10 +80,13 @@ class _EditCardSheetState extends State<EditCardSheet> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.red.withOpacity(0.1)),
-                child:  Center(
-                  child: LineIcon.cog(color: Colors.redAccent,),
+                child: Center(
+                  child: LineIcon.cog(
+                    color: Colors.redAccent,
+                  ),
                 ),
-              ),)
+              ),
+            )
           ],
         ),
       ),

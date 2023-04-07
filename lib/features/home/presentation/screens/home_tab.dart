@@ -21,6 +21,7 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
   late ProfileBloc bloc;
   final transactionBloc = TransactionBloc(injector.get());
+  String balance = '0';
 
   @override
   void initState() {
@@ -38,43 +39,57 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 60,
-            ),
             BlocBuilder<ProfileBloc, ProfileState>(
               bloc: bloc,
               builder: (context, state) {
                 if (state is CachedProfileFetchedState) {
-                  return Row(
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Hello ${state.profile.fullname},',
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              'Welcome Back',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary),
-                            )
-                          ],
-                        ),
+                      const SizedBox(
+                        height: 60,
                       ),
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.blueGrey,
-                        child: Center(
-                            child: Image.asset('assets/gif/sign_up_emoji.gif')),
-                      )
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Hello ${state.profile.fullname},',
+                                  style: const TextStyle(color: Colors.grey),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Welcome Back',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary),
+                                )
+                              ],
+                            ),
+                          ),
+                          CircleAvatar(
+                            radius: 25,
+                            backgroundColor: Colors.blueGrey,
+                            child: Center(
+                                child: Image.asset(
+                                    'assets/gif/sign_up_emoji.gif')),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      _BalanceWidget(balance: balance),
+                      const SizedBox(
+                        height: 25,
+                      ),
                     ],
                   );
                 }
@@ -82,13 +97,7 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
                 return const SizedBox();
               },
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            const _BalanceWidget(),
-            const SizedBox(
-              height: 25,
-            ),
+
             // Row(
             //   crossAxisAlignment: CrossAxisAlignment.start,
             //   children: [
@@ -186,7 +195,8 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
 }
 
 class _BalanceWidget extends StatefulWidget {
-  const _BalanceWidget({Key? key}) : super(key: key);
+  const _BalanceWidget({Key? key, required this.balance}) : super(key: key);
+  final String balance;
 
   @override
   State<_BalanceWidget> createState() => _BalanceWidgetState();
@@ -211,17 +221,17 @@ class _BalanceWidgetState extends State<_BalanceWidget> {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'Current Balance',
                   style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  '\$5,000,00',
-                  style: TextStyle(
+                  'NGN ${widget.balance}',
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                       fontWeight: FontWeight.w600),

@@ -52,32 +52,32 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             height: 20,
           ),
           Row(
-            children: [
-              const Expanded(child: SearchField()),
-              const SizedBox(
+            children: const [
+              Expanded(child: SearchField()),
+              SizedBox(
                 width: 8,
               ),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Center(child: LineIcon.calendar()),
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Center(child: LineIcon.sort()),
-              )
+              // Container(
+              //   height: 50,
+              //   width: 50,
+              //   decoration: BoxDecoration(
+              //       shape: BoxShape.rectangle,
+              //       color: Theme.of(context).cardColor,
+              //       borderRadius: BorderRadius.circular(8)),
+              //   child: Center(child: LineIcon.calendar()),
+              // ),
+              // const SizedBox(
+              //   width: 8,
+              // ),
+              // Container(
+              //   height: 50,
+              //   width: 50,
+              //   decoration: BoxDecoration(
+              //       shape: BoxShape.rectangle,
+              //       color: Theme.of(context).cardColor,
+              //       borderRadius: BorderRadius.circular(8)),
+              //   child: Center(child: LineIcon.sort()),
+              // )
             ],
           ),
           const SizedBox(

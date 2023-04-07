@@ -23,19 +23,28 @@ class _ChangeCardPinScreenState extends State<ChangeCardPinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Change Card Pin',style: TextStyle(fontSize: 16),),),
+      appBar: AppBar(
+        title: const Text(
+          'Change Card Pin',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:  [
-
-            const Text('NOTE : By changing your pin, this pin will replace your already existing card pin.',style: TextStyle(color: Colors.grey,fontSize: 13),),
-
+          children: [
+            const Text(
+              'NOTE : By changing your pin, this pin will replace your already existing card pin.',
+              style: TextStyle(color: Colors.grey, fontSize: 13),
+            ),
             const SizedBox(
               height: 16,
             ),
-            Text('New Pin',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
+            Text(
+              'New Pin',
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            ),
             const SizedBox(
               height: 6,
             ),
@@ -51,7 +60,6 @@ class _ChangeCardPinScreenState extends State<ChangeCardPinScreen> {
                 setState(() {});
               },
               controller: passwordController,
-
               validator: MultiValidator([
                 RequiredValidator(errorText: 'Enter password'),
                 MinLengthValidator(4,
@@ -61,7 +69,10 @@ class _ChangeCardPinScreenState extends State<ChangeCardPinScreen> {
             const SizedBox(
               height: 16,
             ),
-            Text('Confirm pin',style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),),
+            Text(
+              'Confirm pin',
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            ),
             const SizedBox(
               height: 6,
             ),
@@ -90,10 +101,8 @@ class _ChangeCardPinScreenState extends State<ChangeCardPinScreen> {
             CustomButton(
                 onPressed: () {
                   // widget.onValidate();
-
-
                 },
-                child:  const Text('Change Pin')),
+                child: const Text('Change Pin')),
           ],
         ),
       ),

@@ -7,5 +7,5 @@ abstract class CardEvent extends Equatable {
 class RequestCardEvent extends CardEvent {
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }

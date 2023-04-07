@@ -31,15 +31,15 @@ class _PayTabState extends State<PayTab> {
               height: 60,
             ),
             Row(
-              children:  [
+              children: [
                 const Icon(Icons.show_chart_rounded),
-                const  SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   "Pay",
                   style: TextStyle(
-                      color:Theme.of(context).colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
@@ -48,40 +48,41 @@ class _PayTabState extends State<PayTab> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                 Text(
-                  "Beneficiaries",
-                  style: TextStyle(
-                      color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "view all",
-                  style: TextStyle(
-                    color: Colors.green.withOpacity(0.8),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: 100,
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => const BeneficiaryItem(),
-                shrinkWrap: true,
-                itemCount: 10,
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.horizontal,
-              ),
-            ),
-             Text(
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //      Text(
+            //       "Beneficiaries",
+            //       style: TextStyle(
+            //           color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
+            //     ),
+            //     Text(
+            //       "view all",
+            //       style: TextStyle(
+            //         color: Colors.green.withOpacity(0.8),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // SizedBox(
+            //   height: 100,
+            //   child: ListView.builder(
+            //     physics: const BouncingScrollPhysics(),
+            //     itemBuilder: (context, index) => const BeneficiaryItem(),
+            //     shrinkWrap: true,
+            //     itemCount: 10,
+            //     padding: EdgeInsets.zero,
+            //     scrollDirection: Axis.horizontal,
+            //   ),
+            // ),
+            Text(
               "Send Money",
-              style:
-                  TextStyle( color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
@@ -97,7 +98,8 @@ class _PayTabState extends State<PayTab> {
               icon: Container(
                 height: 50,
                 width: 50,
-                decoration: AppTheme.iconContainerDecoration(Colors.green.withOpacity(0.1)),
+                decoration: AppTheme.iconContainerDecoration(
+                    Colors.green.withOpacity(0.1)),
                 child: const Icon(
                   Icons.account_balance_rounded,
                   size: 25,
@@ -116,7 +118,8 @@ class _PayTabState extends State<PayTab> {
               icon: Container(
                 height: 50,
                 width: 50,
-                decoration: AppTheme.iconContainerDecoration(Colors.indigo.withOpacity(0.1)),
+                decoration: AppTheme.iconContainerDecoration(
+                    Colors.indigo.withOpacity(0.1)),
                 child: LineIcon.alternateShield(
                   size: 25,
                   color: Colors.indigo,
@@ -126,10 +129,11 @@ class _PayTabState extends State<PayTab> {
             const SizedBox(
               height: 10,
             ),
-             Text(
+            Text(
               "Pay Bills",
-              style:
-                  TextStyle(color:Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
@@ -145,7 +149,8 @@ class _PayTabState extends State<PayTab> {
               icon: Container(
                 height: 50,
                 width: 50,
-                decoration: AppTheme.iconContainerDecoration(Colors.orange.withOpacity(0.1)),
+                decoration: AppTheme.iconContainerDecoration(
+                    Colors.orange.withOpacity(0.1)),
                 child: LineIcon.mobilePhone(
                   size: 25,
                   color: Colors.orangeAccent,
@@ -163,8 +168,8 @@ class _PayTabState extends State<PayTab> {
               icon: Container(
                 height: 50,
                 width: 50,
-                decoration:
-                    AppTheme.iconContainerDecoration(Colors.purple.withOpacity(0.1)),
+                decoration: AppTheme.iconContainerDecoration(
+                    Colors.purple.withOpacity(0.1)),
                 child: LineIcon.wallet(
                   size: 25,
                   color: Colors.purple,

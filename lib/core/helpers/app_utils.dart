@@ -4,6 +4,9 @@ import 'dart:ui';
 import 'package:banking_app/app/presentation/widgets/danger_dialog.dart';
 import 'package:banking_app/core/constants/storage_keys.dart';
 import 'package:banking_app/core/helpers/storage_helper.dart';
+import 'package:banking_app/features/auth/presentation/screens/confirm_pin_screen.dart';
+import 'package:banking_app/features/pay/presentation/widgets/transfer_success_dialog.dart';
+import 'package:banking_app/features/transactions/data/models/get_transaction_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,9 +27,9 @@ class AppUtils {
                 ),
                 textButtonTheme: TextButtonThemeData(
                   style: TextButton.styleFrom(
-                    // foregroundColor:
-                    //     Theme.of(context).primaryColor, // button text color
-                  ),
+                      // foregroundColor:
+                      //     Theme.of(context).primaryColor, // button text color
+                      ),
                 ),
               ),
               child: child!,
@@ -65,9 +68,9 @@ class AppUtils {
               entryModeIconColor: Theme.of(context).primaryColor),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              // foregroundColor:
-              //     Theme.of(context).primaryColor, // button text color
-            ),
+                // foregroundColor:
+                //     Theme.of(context).primaryColor, // button text color
+                ),
           ),
         ),
         child: child!,
@@ -185,13 +188,13 @@ class AppUtils {
                 children: [
                   TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          // foregroundColor: Colors.transparent
-                          ),
-                      onPressed:onDismiss ?? () {
-                        Navigator.pop(context);
-
-                      },
+                        backgroundColor: Colors.transparent,
+                        // foregroundColor: Colors.transparent
+                      ),
+                      onPressed: onDismiss ??
+                          () {
+                            Navigator.pop(context);
+                          },
                       child: const Text(
                         'Cancel',
                         style: TextStyle(
@@ -201,13 +204,13 @@ class AppUtils {
                   const SizedBox(),
                   TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          // foregroundColor: Colors.transparent
+                        backgroundColor: Colors.transparent,
+                        // foregroundColor: Colors.transparent
                       ),
-                      onPressed:onConfirm ?? () {
-                        Navigator.pop(context);
-
-                      },
+                      onPressed: onConfirm ??
+                          () {
+                            Navigator.pop(context);
+                          },
                       child: const Text(
                         'Yes',
                         style: TextStyle(color: Colors.indigo),
@@ -240,6 +243,45 @@ class AppUtils {
         return Container();
       }
     }
+  }
+
+  static void showPinView(BuildContext context,
+      {required Function(String) onDone,
+      required Function(String) onCorrect,
+      required Function() onFailed}) {
+    showGeneralDialog(
+        context: context,
+        barrierColor: Colors.black12.withOpacity(0.6),
+        // Background color
+        barrierDismissible: true,
+        barrierLabel: 'Dialog',
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (_, __, ___) {
+          return ConfirmPinScreen(
+            onDone: onDone,
+            onCorrect: onCorrect,
+            onFailed: onFailed,
+          );
+        });
+  }
+
+  static void showTransferSuccessDialog(
+    BuildContext context, {
+    required Function() onDone,
+    required Transaction transaction,
+  }) {
+    showGeneralDialog(
+        context: context,
+        barrierColor: Colors.black12.withOpacity(0.6),
+        // Background color
+        barrierDismissible: true,
+        barrierLabel: 'Dialog',
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (_, __, ___) {
+          return TransferSuccessDialog(
+            transaction: transaction,
+          );
+        });
   }
 }
 

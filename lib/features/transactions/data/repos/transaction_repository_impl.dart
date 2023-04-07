@@ -17,11 +17,10 @@ class TransactionRepositoryImpl extends TransactionRepository {
   TransactionRepositoryImpl(this.httpClient);
 
   @override
-  Future<State> fetchUserData() {
+  Future<State> fetchUserData(String accountNumber) {
     return SimplifyApiConsuming.makeRequest(
-      () => httpClient.post(
-        TransactionEndpoints.fetchUserData,
-        body: {},
+      () => httpClient.get(
+        '${TransactionEndpoints.fetchUserData}/$accountNumber',
       ),
       successResponse: (data) {
         return State<FetchUsersResponse?>.success(
@@ -35,9 +34,11 @@ class TransactionRepositoryImpl extends TransactionRepository {
           ServerErrorModel(
               statusCode: response.statusCode!,
               errorMessage: 'Something went wrong',
-              data: (response.data['errors'] as List)
-                  .map((e) => e.toString())
-                  .toList()),
+              data: response.data['errors'] == null
+                  ? [response.data['message']]
+                  : (response.data['errors'] as List)
+                      .map((e) => e.toString())
+                      .toList()),
         );
       },
       dioErrorResponse: (response) {
@@ -46,10 +47,11 @@ class TransactionRepositoryImpl extends TransactionRepository {
           ServerErrorModel(
               statusCode: response.statusCode!,
               errorMessage: "Something went wrong please retry!! ",
-              data: (response.data['errors'] as List)
+              data: response.data['errors'] == null
+                  ? [response.data['message']]
+                  : (response.data['errors'] as List)
                       .map((e) => e.toString())
-                      .toList() ??
-                  response.data),
+                      .toList()),
         );
       },
     );
@@ -121,10 +123,11 @@ class TransactionRepositoryImpl extends TransactionRepository {
           ServerErrorModel(
               statusCode: response.statusCode!,
               errorMessage: "Something went wrong please retry!! ",
-              data: (response.data['errors'] as List)
+              data: response.data['errors'] == null
+                  ? [response.data['message']]
+                  : (response.data['errors'] as List)
                       .map((e) => e.toString())
-                      .toList() ??
-                  response.data),
+                      .toList()),
         );
       },
     );
@@ -174,8 +177,8 @@ class TransactionRepositoryImpl extends TransactionRepository {
           body: payload.toJson()),
       isStatusCode: false,
       successResponse: (data) {
-        return State<VerifyTransactionResponse?>.success(
-            VerifyTransactionResponse.fromJson(data));
+        return State<GetTransactionResponse?>.success(
+            GetTransactionResponse.fromJson(data));
       },
       statusCodeSuccess: 200,
       errorResponse: (response) {
@@ -184,9 +187,11 @@ class TransactionRepositoryImpl extends TransactionRepository {
           ServerErrorModel(
               statusCode: response.statusCode!,
               errorMessage: 'Something went wrong',
-              data: (response.data['errors'] as List)
-                  .map((e) => e.toString())
-                  .toList()),
+              data: response.data['errors'] == null
+                  ? [response.data['message']]
+                  : (response.data['errors'] as List)
+                      .map((e) => e.toString())
+                      .toList()),
         );
       },
       dioErrorResponse: (response) {
@@ -195,10 +200,11 @@ class TransactionRepositoryImpl extends TransactionRepository {
           ServerErrorModel(
               statusCode: response.statusCode!,
               errorMessage: "Something went wrong please retry!! ",
-              data: (response.data['errors'] as List)
+              data: response.data['errors'] == null
+                  ? [response.data['message']]
+                  : (response.data['errors'] as List)
                       .map((e) => e.toString())
-                      .toList() ??
-                  response.data),
+                      .toList()),
         );
       },
     );

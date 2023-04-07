@@ -7,7 +7,7 @@ abstract class TransactionRepository {
 
   Future<State> saveTransaction(SaveTransactionPayload payload);
 
-  Future<State> fetchUserData();
+  Future<State> fetchUserData(String accountNumber);
 
   Future<State> verifyTransaction(String code,String transId);
 

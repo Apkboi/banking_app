@@ -8,6 +8,7 @@ class GetAllTransactionsEvent extends TransactionEvent {
   @override
   List<Object?> get props => [];
 }
+
 class GetTransactionEvent extends TransactionEvent {
   final String transId;
 
@@ -16,15 +17,17 @@ class GetTransactionEvent extends TransactionEvent {
   @override
   List<Object?> get props => [transId];
 }
+
 class VerifyTransactionEvent extends TransactionEvent {
   final String code;
   final String transId;
 
-  const VerifyTransactionEvent(this.code,this.transId);
+  const VerifyTransactionEvent(this.code, this.transId);
 
   @override
   List<Object?> get props => [transId];
 }
+
 class SaveTransactionEvent extends TransactionEvent {
   final SaveTransactionPayload payload;
 
@@ -33,21 +36,25 @@ class SaveTransactionEvent extends TransactionEvent {
   @override
   List<Object?> get props => [payload];
 }
+
 class FetchUserDataEvent extends TransactionEvent {
-  const FetchUserDataEvent();
+  const FetchUserDataEvent(this.accountNumber);
+  final String accountNumber;
 
   @override
   List<Object?> get props => [];
 }
 
 class VerifyP2PTransactionEvent extends TransactionEvent {
+  final String code;
   final String transId;
 
-  const VerifyP2PTransactionEvent(this.transId);
+  const VerifyP2PTransactionEvent({required this.transId, required this.code});
 
   @override
   List<Object?> get props => [transId];
 }
+
 class SaveP2PTransactionEvent extends TransactionEvent {
   final SaveTransactionPayload payload;
 

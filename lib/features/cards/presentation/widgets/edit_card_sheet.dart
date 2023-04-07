@@ -62,7 +62,7 @@ class _EditCardSheetState extends State<EditCardSheet> {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => const TopUpFromBankScreen(),));
               },
-              billTittle: 'Card limit',
+              billTittle: 'Change card duress pin',
               billDescription: 'Update the limit which this card can spend.',
               icon: Container(
                 height: 50,

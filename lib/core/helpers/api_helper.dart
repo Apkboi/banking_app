@@ -105,9 +105,11 @@ class SimplifyApiConsuming {
       Response response,
       State Function(dynamic data) successResponse,
       State Function(Response data) errorResponse) {
-    if (response.data['status'] == 'success') {
+    if (response.data['status'].toString() == 'true') {
+      log('STATUS :${response.data['status']}');
       return successResponse(response.data);
+    } else {
+      return errorResponse(response);
     }
-    return errorResponse(response);
   }
 }

@@ -27,6 +27,9 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     on<GetTransactionEvent>(_mapGetTransactionEventToState);
     on<SaveTransactionEvent>(_mapSaveTransactionEventToState);
     on<VerifyTransactionEvent>(_mapVerifyTransactionEventToState);
+    on<VerifyP2PTransactionEvent>(_mapVerifyP2PTransactionEventToState);
+    on<SaveP2PTransactionEvent>(_mapSaveP2PTransactionEventToState);
+    on<FetchUserDataEvent>(_mapFetchUserDataEventToState);
   }
 
   FutureOr<void> _mapGetAllTransactionsEventToState(
@@ -83,7 +86,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       } else if (state is ErrorState) {
         ServerErrorModel errorModel = state.value;
         emit(SaveTransactionFailureState(
-            errorModel.data ?? [errorModel.errorMessage]));
+            errorModel.data[0] ?? [errorModel.errorMessage][0]));
       }
     } on Exception catch (e, stack) {
       log('${e.toString()}${stack.toString()}');
@@ -97,7 +100,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     emit(VerifyTransactionLoadingState());
 
     try {
-      State state = await transactionRepository.verifyTransaction(event.code,event.transId);
+      State state = await transactionRepository.verifyTransaction(
+          event.code, event.transId);
       if (state is SuccessState) {
         VerifyTransactionResponse response = state.value;
         emit(VerifyTransactionSucessState(state.value));
@@ -110,6 +114,72 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       log('${e.toString()}${stack.toString()}');
       emit(const VerifyTransactionFailureState(
           'Something went wrong please retry'));
+    }
+  }
+
+  FutureOr<void> _mapVerifyP2PTransactionEventToState(
+      VerifyP2PTransactionEvent event, Emitter<TransactionState> emit) async {
+    emit(VerifyP2PTransactionLoadingState());
+
+    try {
+      State state = await transactionRepository.verifyP2PTransaction(
+          event.code, event.transId);
+      if (state is SuccessState) {
+        VerifyTransactionResponse response = state.value;
+        emit(VerifyP2PTransactionSucessState(state.value));
+      } else if (state is ErrorState) {
+        ServerErrorModel errorModel = state.value;
+        emit(VerifyP2PTransactionFailureState(
+            errorModel.data ?? [errorModel.errorMessage]));
+      }
+    } on Exception catch (e, stack) {
+      log('${e.toString()}${stack.toString()}');
+      emit(const VerifyP2PTransactionFailureState(
+          'Something went wrong please retry'));
+    }
+  }
+
+  FutureOr<void> _mapSaveP2PTransactionEventToState(
+      SaveP2PTransactionEvent event, Emitter<TransactionState> emit) async {
+    emit(SaveP2PTransactionLoadingState());
+
+    try {
+      State state =
+          await transactionRepository.saveP2PTransaction(event.payload);
+      if (state is SuccessState) {
+        GetTransactionResponse response = state.value;
+        emit(SaveP2PTransactionSucessState(state.value));
+      } else if (state is ErrorState) {
+        ServerErrorModel errorModel = state.value;
+        emit(SaveP2PTransactionFailureState(
+            errorModel.data ?? [errorModel.errorMessage]));
+      }
+    } on Exception catch (e, stack) {
+      log('${e.toString()}${stack.toString()}');
+      emit(const SaveP2PTransactionFailureState(
+          'Something went wrong please retry'));
+    }
+  }
+
+  FutureOr<void> _mapFetchUserDataEventToState(
+      FetchUserDataEvent event, Emitter<TransactionState> emit) async {
+    emit(FetchUserLoadingState());
+
+    try {
+      State state =
+          await transactionRepository.fetchUserData(event.accountNumber);
+      if (state is SuccessState) {
+        FetchUsersResponse response = state.value;
+        emit(FetchUserSucessState(response));
+      } else if (state is ErrorState) {
+        ServerErrorModel errorModel = state.value;
+        emit(FetchUserFailureState(errorModel.data == null
+            ? [errorModel.errorMessage][0]
+            : errorModel.data[0]));
+      }
+    } on Exception catch (e, stack) {
+      log('${e.toString()}${stack.toString()}');
+      emit(const FetchUserFailureState('Something went wrong please retry'));
     }
   }
 }

@@ -1,8 +1,11 @@
+import 'package:banking_app/features/transactions/data/models/get_transaction_response.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/TransactionDetailTile.dart';
 import 'package:flutter/material.dart';
 
 class TransactionDetailsSheet extends StatefulWidget {
-  const TransactionDetailsSheet({Key? key}) : super(key: key);
+  const TransactionDetailsSheet({Key? key, required this.transaction}) : super(key: key);
+  final Transaction transaction;
+
 
   @override
   State<TransactionDetailsSheet> createState() =>
@@ -32,9 +35,9 @@ class _TransactionDetailsSheetState extends State<TransactionDetailsSheet> {
           const SizedBox(
             height: 16,
           ),
-          const TransactionDetailTile(
+           TransactionDetailTile(
             leading:      'Transaction ID',
-            trailing:      'dddd',
+            trailing:   widget.transaction.referenceId! ,
           ),
 
           const SizedBox(
@@ -63,7 +66,7 @@ class _TransactionDetailsSheetState extends State<TransactionDetailsSheet> {
           ),
           const TransactionDetailTile(
             leading:   'Payment Method',
-            trailing:   'Card Transfer',
+            trailing:   'Transfer',
 
           ),
 
@@ -76,19 +79,19 @@ class _TransactionDetailsSheetState extends State<TransactionDetailsSheet> {
           const SizedBox(
             height: 16,
           ),
-          const TransactionDetailTile(
-            leading: 'Payment Category',
-            trailing:  'Data subscription',
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          const Divider(
-            color: Colors.grey,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
+          // const TransactionDetailTile(
+          //   leading: 'Payment Category',
+          //   trailing:  'Data subscription',
+          // ),
+          // const SizedBox(
+          //   height: 16,
+          // ),
+          // const Divider(
+          //   color: Colors.grey,
+          // ),
+          // const SizedBox(
+          //   height: 16,
+          // ),
           const TransactionDetailTile(
             leading: 'Status',
             trailing: 'Completed',
@@ -103,9 +106,9 @@ class _TransactionDetailsSheetState extends State<TransactionDetailsSheet> {
           const SizedBox(
             height: 16,
           ),
-          const TransactionDetailTile(
+           TransactionDetailTile(
             leading:  'Amount(In Naira)',
-            trailing:  'NGN ${300}',
+            trailing:  'NGN ${widget.transaction.amount!}',
           ),
 
           const SizedBox(

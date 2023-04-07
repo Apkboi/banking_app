@@ -66,7 +66,10 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(getHintText(),style: const TextStyle(color: Colors.grey),),
+                      Text(
+                        getHintText(),
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -145,7 +148,8 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
     }
     if (state is SetTransactionPinSuccessState) {
       CustomSnackBar.showMessage(context,
-          message: 'Transaction pin has been set successfully 💪🏿 ',backgroundColor: Colors.green);
+          message: 'Transaction pin has been set successfully 💪🏿 ',
+          backgroundColor: Colors.green);
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const DuressPinScreen(),
       ));

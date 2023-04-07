@@ -1,15 +1,15 @@
 import 'dart:developer';
 
+import 'package:banking_app/app/presentation/widgets/circular_loader.dart';
 import 'package:banking_app/core/di/injector.dart';
-import 'package:banking_app/features/home/presentation/widgets/beneficiary_item.dart';
+import 'package:banking_app/core/helpers/extension.dart';
 import 'package:banking_app/features/home/presentation/widgets/topup_sheet.dart';
 import 'package:banking_app/features/profile/dormain/repository/local/profile_store.dart';
 import 'package:banking_app/features/profile/presentation/blocs/profile_bloc.dart';
-import 'package:banking_app/features/profile/presentation/blocs/profile_bloc.dart';
+import 'package:banking_app/features/transactions/presentation/blocs/transaction_bloc/transaction_bloc.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:line_icons/line_icon.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -18,14 +18,16 @@ class HomeTab extends StatefulWidget {
   State<HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
   late ProfileBloc bloc;
+  final transactionBloc = TransactionBloc(injector.get());
 
   @override
   void initState() {
     super.initState();
     bloc = injector.get<ProfileBloc>();
     bloc.add(GetCachedUserEvent());
+    transactionBloc.add(GetAllTransactionsEvent());
   }
 
   @override
@@ -87,33 +89,33 @@ class _HomeTabState extends State<HomeTab> {
             const SizedBox(
               height: 25,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: SizedBox(
-                    height: 80,
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => const BeneficiaryItem(),
-                      shrinkWrap: true,
-                      itemCount: 6,
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 6,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: LineIcon.arrowCircleRight(),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+            // Row(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Expanded(
+            //       child: SizedBox(
+            //         height: 80,
+            //         child: ListView.builder(
+            //           physics: const BouncingScrollPhysics(),
+            //           itemBuilder: (context, index) => const BeneficiaryItem(),
+            //           shrinkWrap: true,
+            //           itemCount: 6,
+            //           scrollDirection: Axis.horizontal,
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(
+            //       width: 6,
+            //     ),
+            //     IconButton(
+            //       onPressed: () {},
+            //       icon: LineIcon.arrowCircleRight(),
+            //     )
+            //   ],
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
             Row(
               children: [
                 Expanded(
@@ -130,9 +132,10 @@ class _HomeTabState extends State<HomeTab> {
                       const SizedBox(
                         height: 6,
                       ),
-                      const Text(
-                        'Today 30th, Dec',
-                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                      Text(
+                        'Today ${DateTime.now().formatToSringDate}',
+                        style:
+                            const TextStyle(fontSize: 13, color: Colors.grey),
                       )
                     ],
                   ),
@@ -146,12 +149,30 @@ class _HomeTabState extends State<HomeTab> {
               height: 10,
             ),
             Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) => const TransactionItem(),
+              child: BlocConsumer<TransactionBloc, TransactionState>(
+                bloc: transactionBloc,
+                listener: (context, state) {},
+                builder: (context, state) {
+                  if (state is GetAllTransactionSucessState) {
+                    return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      itemCount: 6,
+                      itemBuilder: (context, index) => TransactionItem(
+                        transaction: state.response.transactions![index],
+                      ),
+                    );
+                  }
+                  if (state is GetAllTransactionLoadingState) {
+                    return Center(
+                      child: CircularLoader(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                },
               ),
             )
           ],
@@ -159,6 +180,9 @@ class _HomeTabState extends State<HomeTab> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _BalanceWidget extends StatefulWidget {

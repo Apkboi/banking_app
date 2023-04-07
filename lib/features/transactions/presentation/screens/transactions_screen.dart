@@ -1,6 +1,10 @@
+import 'package:banking_app/app/presentation/widgets/circular_loader.dart';
 import 'package:banking_app/app/presentation/widgets/search_field.dart';
+import 'package:banking_app/core/di/injector.dart';
+import 'package:banking_app/features/transactions/presentation/blocs/transaction_bloc/transaction_bloc.dart';
 import 'package:banking_app/features/transactions/presentation/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_icons/line_icon.dart';
 
 class TransactionsScreen extends StatefulWidget {
@@ -11,6 +15,14 @@ class TransactionsScreen extends StatefulWidget {
 }
 
 class _TransactionsScreenState extends State<TransactionsScreen> {
+  final transactionBloc = TransactionBloc(injector.get());
+
+  @override
+  void initState() {
+    transactionBloc.add(GetAllTransactionsEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -72,11 +84,30 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
             height: 20,
           ),
           Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemCount: 7,
-              itemBuilder: (context, index) => const TransactionItem(),
+            child: BlocConsumer<TransactionBloc, TransactionState>(
+              bloc: transactionBloc,
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is GetAllTransactionSucessState) {
+                  return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: state.response.transactions!.length,
+                    itemBuilder: (context, index) => TransactionItem(
+                      transaction: state.response.transactions![index],
+                    ),
+                  );
+                }
+                if (state is GetAllTransactionLoadingState) {
+                  return Center(
+                    child: CircularLoader(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
             ),
           )
         ],

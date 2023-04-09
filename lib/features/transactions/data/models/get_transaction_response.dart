@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:banking_app/features/auth/data/models/auth_success_response.dart';
+
 GetTransactionResponse getTransactionResponseFromJson(String str) =>
     GetTransactionResponse.fromJson(json.decode(str));
 
@@ -12,6 +14,7 @@ String getTransactionResponseToJson(GetTransactionResponse data) =>
 
 class GetTransactionResponse {
   GetTransactionResponse({
+    this.profile,
     this.status,
     this.message,
     this.transaction,
@@ -20,6 +23,7 @@ class GetTransactionResponse {
   final bool? status;
   final String? message;
   final Transaction? transaction;
+  final Profile? profile;
 
   factory GetTransactionResponse.fromJson(Map<String, dynamic> json) =>
       GetTransactionResponse(
@@ -27,13 +31,21 @@ class GetTransactionResponse {
         message: json["message"],
         transaction: json["transaction"] == null
             ? null
-            : Transaction.fromJson(json["transaction"]),
+            : Transaction.fromJson(
+                json["transaction"],
+              ),
+        profile: json["profile"] == null
+            ? null
+            : Profile.fromJson(
+                json["profile"],
+              ),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
         "transaction": transaction?.toJson(),
+        "profile": profile?.toJson(),
       };
 }
 

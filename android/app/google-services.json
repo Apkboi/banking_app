@@ -29,6 +29,13 @@
             {
               "client_id": "1030792127075-7m9khnt168uu3f9t1kvslka42bqjc22r.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1030792127075-l5ck5c3c0h3uipnic7f0n719h0a0haut.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bankingApp"
+              }
             }
           ]
         }

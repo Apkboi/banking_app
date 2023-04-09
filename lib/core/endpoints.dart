@@ -29,4 +29,11 @@ class TransactionEndpoints {
 class CardEndpoints {
   static const String requestCard =
       '${Constants.baseUrl}/api/user/card/request';
+  static const String setCardPin =
+      '${Constants.baseUrl}/api/user/card/card-pin';
+  static const String setCardDuressPin =
+      '${Constants.baseUrl}/api/user/card/duress-pin';
+  static const String deleteCard =
+      '${Constants.baseUrl}}/api/user/card/delete/';
+  static const String getCard = '${Constants.baseUrl}/api/user/card';
 }

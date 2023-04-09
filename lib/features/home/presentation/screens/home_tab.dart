@@ -86,7 +86,8 @@ class _HomeTabState extends State<HomeTab> with AutomaticKeepAliveClientMixin {
                       const SizedBox(
                         height: 25,
                       ),
-                      _BalanceWidget(balance: balance),
+                      _BalanceWidget(
+                          balance: state.profile.walletBalance.toString()),
                       const SizedBox(
                         height: 25,
                       ),
